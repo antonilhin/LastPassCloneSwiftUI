@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A8D562C243E02F000C6E1E7 /* SinglePass.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2A8D562A243E02F000C6E1E7 /* SinglePass.xcdatamodeld */; };
+		2A8D562F243E041400C6E1E7 /* ColorExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A8D562E243E041400C6E1E7 /* ColorExt.swift */; };
 		2AD3498C243CA592005FDC60 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD3498B243CA592005FDC60 /* AppDelegate.swift */; };
 		2AD3498E243CA592005FDC60 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD3498D243CA592005FDC60 /* SceneDelegate.swift */; };
 		2AD34990243CA592005FDC60 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD3498F243CA592005FDC60 /* ContentView.swift */; };
@@ -16,6 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2A8D562B243E02F000C6E1E7 /* SinglePass.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SinglePass.xcdatamodel; sourceTree = "<group>"; };
+		2A8D562E243E041400C6E1E7 /* ColorExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExt.swift; sourceTree = "<group>"; };
 		2AD34988243CA592005FDC60 /* LastPassCloneSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LastPassCloneSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2AD3498B243CA592005FDC60 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2AD3498D243CA592005FDC60 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -37,6 +41,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2A8D562D243E040000C6E1E7 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				2A8D562E243E041400C6E1E7 /* ColorExt.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		2AD3497F243CA592005FDC60 = {
 			isa = PBXGroup;
 			children = (
@@ -56,12 +68,14 @@
 		2AD3498A243CA592005FDC60 /* LastPassCloneSwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				2A8D562D243E040000C6E1E7 /* Extensions */,
 				2AD3498B243CA592005FDC60 /* AppDelegate.swift */,
 				2AD3498D243CA592005FDC60 /* SceneDelegate.swift */,
 				2AD3498F243CA592005FDC60 /* ContentView.swift */,
 				2AD34991243CA593005FDC60 /* Assets.xcassets */,
 				2AD34996243CA593005FDC60 /* LaunchScreen.storyboard */,
 				2AD34999243CA593005FDC60 /* Info.plist */,
+				2A8D562A243E02F000C6E1E7 /* SinglePass.xcdatamodeld */,
 				2AD34993243CA593005FDC60 /* Preview Content */,
 			);
 			path = LastPassCloneSwiftUI;
@@ -146,6 +160,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A8D562C243E02F000C6E1E7 /* SinglePass.xcdatamodeld in Sources */,
+				2A8D562F243E041400C6E1E7 /* ColorExt.swift in Sources */,
 				2AD3498C243CA592005FDC60 /* AppDelegate.swift in Sources */,
 				2AD3498E243CA592005FDC60 /* SceneDelegate.swift in Sources */,
 				2AD34990243CA592005FDC60 /* ContentView.swift in Sources */,
@@ -342,6 +358,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		2A8D562A243E02F000C6E1E7 /* SinglePass.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				2A8D562B243E02F000C6E1E7 /* SinglePass.xcdatamodel */,
+			);
+			currentVersion = 2A8D562B243E02F000C6E1E7 /* SinglePass.xcdatamodel */;
+			path = SinglePass.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 2AD34980243CA592005FDC60 /* Project object */;
 }
