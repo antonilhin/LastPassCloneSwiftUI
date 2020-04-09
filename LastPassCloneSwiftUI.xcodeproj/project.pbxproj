@@ -15,6 +15,16 @@
 		2AD34992243CA593005FDC60 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2AD34991243CA593005FDC60 /* Assets.xcassets */; };
 		2AD34995243CA593005FDC60 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2AD34994243CA593005FDC60 /* Preview Assets.xcassets */; };
 		2AD34998243CA593005FDC60 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2AD34996243CA593005FDC60 /* LaunchScreen.storyboard */; };
+		2AE80E84243F5F16006D0233 /* NeumorphicEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE80E83243F5F16006D0233 /* NeumorphicEffect.swift */; };
+		2AE80E87243F5F65006D0233 /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE80E86243F5F65006D0233 /* AuthenticationView.swift */; };
+		2AE80E8A243F5FF1006D0233 /* SharedTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE80E89243F5FF1006D0233 /* SharedTextfield.swift */; };
+		2AE80E8C243F603D006D0233 /* PasswordField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE80E8B243F603D006D0233 /* PasswordField.swift */; };
+		2AE80E8E243F6075006D0233 /* LCButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE80E8D243F6075006D0233 /* LCButton.swift */; };
+		2AE80E91243F60AB006D0233 /* HapticFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE80E90243F60AB006D0233 /* HapticFeedback.swift */; };
+		2AE80E93243F60DA006D0233 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE80E92243F60DA006D0233 /* LoginView.swift */; };
+		2AE80E95243F6113006D0233 /* FormModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE80E94243F6113006D0233 /* FormModifier.swift */; };
+		2AE80E97243F616E006D0233 /* NotificationCenterExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE80E96243F616E006D0233 /* NotificationCenterExt.swift */; };
+		2AE80E99243F6304006D0233 /* AccountCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE80E98243F6304006D0233 /* AccountCreationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +38,16 @@
 		2AD34994243CA593005FDC60 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2AD34997243CA593005FDC60 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2AD34999243CA593005FDC60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2AE80E83243F5F16006D0233 /* NeumorphicEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeumorphicEffect.swift; sourceTree = "<group>"; };
+		2AE80E86243F5F65006D0233 /* AuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
+		2AE80E89243F5FF1006D0233 /* SharedTextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedTextfield.swift; sourceTree = "<group>"; };
+		2AE80E8B243F603D006D0233 /* PasswordField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordField.swift; sourceTree = "<group>"; };
+		2AE80E8D243F6075006D0233 /* LCButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LCButton.swift; sourceTree = "<group>"; };
+		2AE80E90243F60AB006D0233 /* HapticFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticFeedback.swift; sourceTree = "<group>"; };
+		2AE80E92243F60DA006D0233 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		2AE80E94243F6113006D0233 /* FormModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormModifier.swift; sourceTree = "<group>"; };
+		2AE80E96243F616E006D0233 /* NotificationCenterExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterExt.swift; sourceTree = "<group>"; };
+		2AE80E98243F6304006D0233 /* AccountCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCreationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +65,7 @@
 			isa = PBXGroup;
 			children = (
 				2A8D562E243E041400C6E1E7 /* ColorExt.swift */,
+				2AE80E96243F616E006D0233 /* NotificationCenterExt.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -68,6 +89,10 @@
 		2AD3498A243CA592005FDC60 /* LastPassCloneSwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				2AE80E8F243F609F006D0233 /* Shared */,
+				2AE80E88243F5FE0006D0233 /* Views */,
+				2AE80E85243F5F59006D0233 /* Screens */,
+				2AE80E82243F5EED006D0233 /* Modifiers */,
 				2A8D562D243E040000C6E1E7 /* Extensions */,
 				2AD3498B243CA592005FDC60 /* AppDelegate.swift */,
 				2AD3498D243CA592005FDC60 /* SceneDelegate.swift */,
@@ -87,6 +112,43 @@
 				2AD34994243CA593005FDC60 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		2AE80E82243F5EED006D0233 /* Modifiers */ = {
+			isa = PBXGroup;
+			children = (
+				2AE80E83243F5F16006D0233 /* NeumorphicEffect.swift */,
+				2AE80E94243F6113006D0233 /* FormModifier.swift */,
+			);
+			path = Modifiers;
+			sourceTree = "<group>";
+		};
+		2AE80E85243F5F59006D0233 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				2AE80E86243F5F65006D0233 /* AuthenticationView.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		2AE80E88243F5FE0006D0233 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				2AE80E89243F5FF1006D0233 /* SharedTextfield.swift */,
+				2AE80E8B243F603D006D0233 /* PasswordField.swift */,
+				2AE80E8D243F6075006D0233 /* LCButton.swift */,
+				2AE80E92243F60DA006D0233 /* LoginView.swift */,
+				2AE80E98243F6304006D0233 /* AccountCreationView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		2AE80E8F243F609F006D0233 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				2AE80E90243F60AB006D0233 /* HapticFeedback.swift */,
+			);
+			path = Shared;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -160,8 +222,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2AE80E8A243F5FF1006D0233 /* SharedTextfield.swift in Sources */,
 				2A8D562C243E02F000C6E1E7 /* SinglePass.xcdatamodeld in Sources */,
+				2AE80E95243F6113006D0233 /* FormModifier.swift in Sources */,
+				2AE80E91243F60AB006D0233 /* HapticFeedback.swift in Sources */,
 				2A8D562F243E041400C6E1E7 /* ColorExt.swift in Sources */,
+				2AE80E84243F5F16006D0233 /* NeumorphicEffect.swift in Sources */,
+				2AE80E8C243F603D006D0233 /* PasswordField.swift in Sources */,
+				2AE80E93243F60DA006D0233 /* LoginView.swift in Sources */,
+				2AE80E87243F5F65006D0233 /* AuthenticationView.swift in Sources */,
+				2AE80E97243F616E006D0233 /* NotificationCenterExt.swift in Sources */,
+				2AE80E99243F6304006D0233 /* AccountCreationView.swift in Sources */,
+				2AE80E8E243F6075006D0233 /* LCButton.swift in Sources */,
 				2AD3498C243CA592005FDC60 /* AppDelegate.swift in Sources */,
 				2AD3498E243CA592005FDC60 /* SceneDelegate.swift in Sources */,
 				2AD34990243CA592005FDC60 /* ContentView.swift in Sources */,
