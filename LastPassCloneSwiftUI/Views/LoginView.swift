@@ -15,47 +15,7 @@ struct LoginView: View {
     @State private var password = ""
     @State private var formOffset: CGFloat = 0
     
-    var body: some View {
-        SubscriptionView(content: createContent(), publisher: NotificationCenter.keyboardPublisher) { frame in
-            withAnimation {
-                self.formOffset = frame.height > 0 ? -200 : 0
-            }
-        }
-        
-    }
-    
-    fileprivate func createContent() -> some View {
-        VStack {
-            Image("singlePass-dynamic").resizable().aspectRatio(contentMode: .fit) .frame(height: 30)
-                .padding(.bottom)
-            
-            VStack(spacing: 30) {
-                Text("Login").font(.title).bold()
-                VStack(spacing: 30) {
-                    SharedTextfield(value: self.$email, header: "Email" , placeholder: "Your email",errorMessage: "")
-                    PasswordField(value: self.$password, header: "Master Password", placeholder: "Make sure the password is strong", errorMessage: "" , isSecure: true)
-                    
-                    LCButton(text: "Login", backgroundColor: Color.accent ) { }
-                    
-                    Button(action: {
-                        
-                    }) {
-                        VStack {
-                            Image(systemName: "faceid")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 40, height: 40)
-                                .foregroundColor(Color.accent)
-                            Text("Use face ID").foregroundColor(.accent)
-                        }
-                    }
-                }
-                
-                
-            }.modifier(FormModifier()).offset(y: self.formOffset)
-            createAccountButton()
-        }
-    }
+    @EnvironmentObject private var authManager: AuthenticationManager
     
     fileprivate func createAccountButton() -> some View {
         return Button(action: {
@@ -71,6 +31,45 @@ struct LoginView: View {
                     .foregroundColor(Color.darkerAccent)
                 Text("Create account")
                     .accentColor(Color.darkerAccent)
+            }
+        }
+    }
+    
+    fileprivate func createContent() -> some View {
+        return VStack {
+            Image("singlePass-dynamic").resizable().aspectRatio(contentMode: .fit) .frame(height: 30)
+                .padding(.bottom)
+            
+            VStack(spacing: 30) {
+                Text("Login").font(.title).bold()
+                VStack(spacing: 30) {
+                    SharedTextfield(value: self.$authManager.email, header: "Email" , placeholder: "Your email",errorMessage: authManager.emailValidation.message)
+                    PasswordField(value: self.$authManager.password, header: "Master Password", placeholder: "Master password goes here...", errorMessage: authManager.passwordValidation.message , isSecure: true)
+                    
+                    LCButton(text: "Login", backgroundColor: self.authManager.canLogin ? Color.accent : Color.gray) { }.disabled(!self.authManager.canLogin)
+                    
+                    Button(action: {
+                        
+                    }) {
+                        VStack {
+                            Image(systemName: "faceid")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 40, height: 40)
+                                .foregroundColor(Color.accent)
+                            Text("Use face ID").foregroundColor(.accent)
+                        }
+                    }
+                }
+            }.modifier(FormModifier()).offset(y: self.formOffset)
+            createAccountButton()
+        }
+    }
+    
+    var body: some View {
+        SubscriptionView(content: createContent(), publisher: NotificationCenter.keyboardPublisher) { frame in
+            withAnimation {
+                self.formOffset = frame.height > 0 ? -200 : 0
             }
         }
     }

@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		2A8D562C243E02F000C6E1E7 /* SinglePass.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2A8D562A243E02F000C6E1E7 /* SinglePass.xcdatamodeld */; };
 		2A8D562F243E041400C6E1E7 /* ColorExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A8D562E243E041400C6E1E7 /* ColorExt.swift */; };
+		2AB49BD02440B6DD004F92B8 /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB49BCF2440B6DD004F92B8 /* AuthenticationManager.swift */; };
+		2AB49BD32440B6F9004F92B8 /* FormValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB49BD22440B6F9004F92B8 /* FormValidation.swift */; };
 		2AD3498C243CA592005FDC60 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD3498B243CA592005FDC60 /* AppDelegate.swift */; };
 		2AD3498E243CA592005FDC60 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD3498D243CA592005FDC60 /* SceneDelegate.swift */; };
 		2AD34990243CA592005FDC60 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD3498F243CA592005FDC60 /* ContentView.swift */; };
@@ -30,6 +32,8 @@
 /* Begin PBXFileReference section */
 		2A8D562B243E02F000C6E1E7 /* SinglePass.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SinglePass.xcdatamodel; sourceTree = "<group>"; };
 		2A8D562E243E041400C6E1E7 /* ColorExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExt.swift; sourceTree = "<group>"; };
+		2AB49BCF2440B6DD004F92B8 /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
+		2AB49BD22440B6F9004F92B8 /* FormValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormValidation.swift; sourceTree = "<group>"; };
 		2AD34988243CA592005FDC60 /* LastPassCloneSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LastPassCloneSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2AD3498B243CA592005FDC60 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2AD3498D243CA592005FDC60 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -70,6 +74,14 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		2AB49BD12440B6E0004F92B8 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				2AB49BD22440B6F9004F92B8 /* FormValidation.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		2AD3497F243CA592005FDC60 = {
 			isa = PBXGroup;
 			children = (
@@ -89,6 +101,7 @@
 		2AD3498A243CA592005FDC60 /* LastPassCloneSwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				2AB49BD12440B6E0004F92B8 /* Models */,
 				2AE80E8F243F609F006D0233 /* Shared */,
 				2AE80E88243F5FE0006D0233 /* Views */,
 				2AE80E85243F5F59006D0233 /* Screens */,
@@ -147,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				2AE80E90243F60AB006D0233 /* HapticFeedback.swift */,
+				2AB49BCF2440B6DD004F92B8 /* AuthenticationManager.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -223,6 +237,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2AE80E8A243F5FF1006D0233 /* SharedTextfield.swift in Sources */,
+				2AB49BD02440B6DD004F92B8 /* AuthenticationManager.swift in Sources */,
 				2A8D562C243E02F000C6E1E7 /* SinglePass.xcdatamodeld in Sources */,
 				2AE80E95243F6113006D0233 /* FormModifier.swift in Sources */,
 				2AE80E91243F60AB006D0233 /* HapticFeedback.swift in Sources */,
@@ -230,6 +245,7 @@
 				2AE80E84243F5F16006D0233 /* NeumorphicEffect.swift in Sources */,
 				2AE80E8C243F603D006D0233 /* PasswordField.swift in Sources */,
 				2AE80E93243F60DA006D0233 /* LoginView.swift in Sources */,
+				2AB49BD32440B6F9004F92B8 /* FormValidation.swift in Sources */,
 				2AE80E87243F5F65006D0233 /* AuthenticationView.swift in Sources */,
 				2AE80E97243F616E006D0233 /* NotificationCenterExt.swift in Sources */,
 				2AE80E99243F6304006D0233 /* AccountCreationView.swift in Sources */,

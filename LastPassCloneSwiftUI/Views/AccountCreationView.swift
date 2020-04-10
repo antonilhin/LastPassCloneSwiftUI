@@ -10,6 +10,8 @@ import SwiftUI
 
 struct AccountCreationView: View {
     
+    @EnvironmentObject private var authManager: AuthenticationManager
+    
     @Binding var showLogin: Bool
     @State private var email = ""
     @State private var password = ""
@@ -43,12 +45,12 @@ struct AccountCreationView: View {
             VStack(spacing: 10) {
                 Text("Create Account").font(.title).bold()
                 VStack(spacing: 30) {
-                    SharedTextfield(value: self.$email,header: "Email", placeholder: "Your primary email",errorMessage: "")
-                    PasswordField(value: self.$password,header: "Password",  placeholder: "Make sure it's string",errorMessage: "", isSecure: true)
-                    PasswordField(value: self.$confirmedPassword,header: "Confirm Password",  placeholder: "Must match the password", errorMessage: "", isSecure: true)
+                    SharedTextfield(value: self.$authManager.email,header: "Email", placeholder: "Your primary email",errorMessage: authManager.emailValidation.message)
+                    PasswordField(value: self.$authManager.password,header: "Password",  placeholder: "Make sure it's string",errorMessage: authManager.passwordValidation.message, isSecure: true)
+                    PasswordField(value: self.$authManager.confirmedPassword,header: "Confirm Password",  placeholder: "Must match the password", errorMessage: authManager.confirmedPasswordValidation.message, isSecure: true)
                     
                 }
-                LCButton(text: "Sign up", backgroundColor: Color.accent ) {}
+                LCButton(text: "Sign up", backgroundColor: self.authManager.canSignup ? Color.accent : Color.gray ) {}.disabled(!self.authManager.canSignup)
                 
             }.modifier(FormModifier()).offset(y: self.formOffset)
             
