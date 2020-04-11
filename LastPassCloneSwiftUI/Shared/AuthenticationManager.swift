@@ -9,6 +9,8 @@
 import SwiftUI
 import Combine
 import LocalAuthentication
+import KeychainSwift
+import CryptoKit
 
 class AuthenticationManager: ObservableObject {
     
@@ -21,6 +23,7 @@ class AuthenticationManager: ObservableObject {
     @Published var canLogin = false
     @Published var canSignup = false
     
+    
     @Published var emailValidation = FormValidation()
     @Published var passwordValidation = FormValidation()
     @Published var confirmedPasswordValidation = FormValidation()
@@ -28,6 +31,12 @@ class AuthenticationManager: ObservableObject {
     
     private var userDefaults = UserDefaults.standard
     private var laContext = LAContext()
+    
+    @Published var isLoggedIn = false
+    @Published var userAccount = User()
+    private var keychain = KeychainSwift()
+    
+    @Published var biometryType = LABiometryType.none
     
     struct Config {
         static let recommendedLength = 6
@@ -44,7 +53,6 @@ class AuthenticationManager: ObservableObject {
                 if email.isEmpty{
                     return FormValidation(success: false, message: "")
                 }
-                
                 
                 if !Config.emailPredicate.evaluate(with: email){
                     return FormValidation(success: false, message: "Invalid email address")
@@ -115,9 +123,25 @@ class AuthenticationManager: ObservableObject {
         }.eraseToAnyPublisher()
     }
     
-    
+    private lazy var biometryPublisher: Future<Bool, Never> = {
+        Future<Bool, Never> {[unowned self] promise in
+            let myLocalizedReasonString = "Replace with your description explaining why you want to use biometrics"
+            var authError: NSError?
+            self.laContext.localizedFallbackTitle = "Please use your Passcode"
+            if self.canAuthenticate(error: &authError) {
+                self.laContext.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: myLocalizedReasonString) { success, evaluateError in
+                    return  promise(.success(success))
+                }
+            } else {
+                print(authError ?? "")
+                return promise(.success(false))
+            }
+        }
+    }()
     
     init() {
+        
+        getBiometryType()
         emailPublisher
             .assign(to: \.emailValidation, on: self)
             .store(in: &self.cancellableSet)
@@ -150,33 +174,86 @@ class AuthenticationManager: ObservableObject {
         
     }
     
-    func authenticateWithBiometric()  {
+    
+    func hasAccount() -> Bool {
+        guard let _ = keychain.get(AuthKeys.email)  else { return false }
+        return true
+    }
+    
+    func createAccount()  {
+        guard !hasAccount() else { return }
+        let hashedPassword = hashPassword(password)
+        let emailResult = keychain.set(email.lowercased(), forKey: AuthKeys.email, withAccess: .accessibleWhenPasscodeSetThisDeviceOnly)
+        let passwordResult = keychain.set(hashedPassword, forKey: AuthKeys.password, withAccess: .accessibleWhenPasscodeSetThisDeviceOnly)
+        if emailResult && passwordResult {
+            login()
+        }
+    }
+    
+    func login() {
+        userDefaults.set(true, forKey: AuthKeys.isLoggedIn)
+        self.isLoggedIn = true
+    }
+    
+    private func hashPassword(_ password: String) -> String {
+        var salt = ""
         
-        // NSFaceIDUsageDescription Key IN info.plist
-        let biometricPublisher = Future<Bool, Never> {[unowned self] promise in
-            let myLocalizedReasonString = ""
-            var authError: NSError?
-            if self.canAuthenticate(error: &authError) {
-                self.laContext.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: myLocalizedReasonString) { success, evaluateError in
-                    return  promise(.success(success))
-                }
-            } else {
-                print(authError ?? "")
+        if let savedSalt = keychain.get(AuthKeys.salt) {
+            salt = savedSalt
+        } else {
+            let key = SymmetricKey(size: .bits256)
+            salt = key.withUnsafeBytes({ Data(Array($0)).base64EncodedString() })
+            keychain.set(salt, forKey: AuthKeys.salt)
+        }
+        
+        guard let data = "\(password)\(salt)".data(using: .utf8) else { return "" }
+        let digest = SHA256.hash(data: data)
+        return digest.map{String(format: "%02hhx", $0)}.joined()
+    }
+    
+    func authenticate() -> Bool{
+        if let savedEmail = keychain.get(AuthKeys.email),
+            let savedPassword = keychain.get(AuthKeys.password),
+            let salt = keychain.get(AuthKeys.salt){
+            let hashedPassword = hashPassword("\(password)\(salt)")
+            if savedEmail == email.lowercased() && hashedPassword == savedPassword{
+                login()
+                return true
             }
-        }.eraseToAnyPublisher()
-        
-        
-        //        biometricPublisher
-        //            .receive(on: DispatchQueue.main)
-        //            .assign(to: \.isLoggedIn, on: self)
-        //            .store(in: &self.cancellableSet)
-        
-        
+        }
+        return false
+    }
+    
+    func logout() {
+        userDefaults.set(false, forKey: AuthKeys.isLoggedIn)
+        self.isLoggedIn = false
+    }
+    
+    func deleteAccount()  {
+        keychain.delete(AuthKeys.email)
+        keychain.delete(AuthKeys.password)
+        keychain.delete(AuthKeys.salt)
+        logout()
     }
     
     func canAuthenticate(error: NSErrorPointer) -> Bool {
-        self.laContext.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: error)
+        self.laContext.canEvaluatePolicy(.deviceOwnerAuthentication, error: error)
     }
     
+    func authenticateWithBiometric()  {
+        guard hasAccount() else { return }
+        biometryPublisher
+            .receive(on: DispatchQueue.main)
+            .assign(to: \.isLoggedIn, on: self)
+            .store(in: &self.cancellableSet)
+        
+    }
+    
+    func getBiometryType() {
+        var authError: NSError?
+        if canAuthenticate(error: &authError){
+            self.biometryType = laContext.biometryType
+        }
+    }
     
 }

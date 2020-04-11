@@ -24,7 +24,7 @@ struct AuthenticationView: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.background)
-        .edgesIgnoringSafeArea(.all)
+         .edgesIgnoringSafeArea(.all)
     }
 }
 
@@ -33,3 +33,4 @@ struct AuthenticationView_Previews: PreviewProvider {
         AuthenticationView()
     }
 }
+

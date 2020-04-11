@@ -9,9 +9,19 @@
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject private var authManager: AuthenticationManager
+    
     var body: some View {
-         AuthenticationView()
+        
+        ZStack{
+            if authManager.isLoggedIn{
+                Text("Coming soon").font(.title).bold()
+            } else {
+                AuthenticationView()
+            }
+        }
     }
+    
 }
 
 struct ContentView_Previews: PreviewProvider {

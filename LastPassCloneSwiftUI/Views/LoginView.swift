@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import LocalAuthentication
 
 struct LoginView: View {
     
@@ -46,18 +47,34 @@ struct LoginView: View {
                     SharedTextfield(value: self.$authManager.email, header: "Email" , placeholder: "Your email",errorMessage: authManager.emailValidation.message)
                     PasswordField(value: self.$authManager.password, header: "Master Password", placeholder: "Master password goes here...", errorMessage: authManager.passwordValidation.message , isSecure: true)
                     
-                    LCButton(text: "Login", backgroundColor: self.authManager.canLogin ? Color.accent : Color.gray) { }.disabled(!self.authManager.canLogin)
+                    LCButton(text: "Login", backgroundColor: self.authManager.canLogin ? Color.accent : Color.gray) {
+                        _ = self.authManager.authenticate()
+                    }
                     
-                    Button(action: {
-                        
-                    }) {
-                        VStack {
-                            Image(systemName: "faceid")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 40, height: 40)
-                                .foregroundColor(Color.accent)
-                            Text("Use face ID").foregroundColor(.accent)
+                    if self.authManager.hasAccount(){
+                        Button(action: {
+                            self.authManager.authenticateWithBiometric()
+                        }) {
+                            
+                            if self.authManager.biometryType == LABiometryType.faceID{
+                                VStack {
+                                    Image(systemName: "faceid" )
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(width: 40, height: 40)
+                                    Text("Use face ID")
+                                }.foregroundColor(Color.accent)
+                            }
+                            
+                            if self.authManager.biometryType == LABiometryType.touchID{
+                                VStack {
+                                    Image("touchID" )
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(width: 40, height: 40)
+                                    Text("Use touch ID")
+                                }.foregroundColor(Color.accent)
+                            }
                         }
                     }
                 }

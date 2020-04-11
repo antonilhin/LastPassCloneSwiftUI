@@ -3,12 +3,15 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		2A8D562C243E02F000C6E1E7 /* SinglePass.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2A8D562A243E02F000C6E1E7 /* SinglePass.xcdatamodeld */; };
 		2A8D562F243E041400C6E1E7 /* ColorExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A8D562E243E041400C6E1E7 /* ColorExt.swift */; };
+		2AACFE9B24420DAB0046B013 /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2AACFE9A24420DAB0046B013 /* KeychainSwift */; };
+		2AACFE9D24420EDF0046B013 /* AuthKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AACFE9C24420EDF0046B013 /* AuthKeys.swift */; };
+		2AACFE9F24420F060046B013 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AACFE9E24420F060046B013 /* User.swift */; };
 		2AB49BD02440B6DD004F92B8 /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB49BCF2440B6DD004F92B8 /* AuthenticationManager.swift */; };
 		2AB49BD32440B6F9004F92B8 /* FormValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB49BD22440B6F9004F92B8 /* FormValidation.swift */; };
 		2AD3498C243CA592005FDC60 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD3498B243CA592005FDC60 /* AppDelegate.swift */; };
@@ -32,6 +35,8 @@
 /* Begin PBXFileReference section */
 		2A8D562B243E02F000C6E1E7 /* SinglePass.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SinglePass.xcdatamodel; sourceTree = "<group>"; };
 		2A8D562E243E041400C6E1E7 /* ColorExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExt.swift; sourceTree = "<group>"; };
+		2AACFE9C24420EDF0046B013 /* AuthKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthKeys.swift; sourceTree = "<group>"; };
+		2AACFE9E24420F060046B013 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		2AB49BCF2440B6DD004F92B8 /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
 		2AB49BD22440B6F9004F92B8 /* FormValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormValidation.swift; sourceTree = "<group>"; };
 		2AD34988243CA592005FDC60 /* LastPassCloneSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LastPassCloneSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -59,6 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2AACFE9B24420DAB0046B013 /* KeychainSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				2AB49BD22440B6F9004F92B8 /* FormValidation.swift */,
+				2AACFE9E24420F060046B013 /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -161,6 +168,7 @@
 			children = (
 				2AE80E90243F60AB006D0233 /* HapticFeedback.swift */,
 				2AB49BCF2440B6DD004F92B8 /* AuthenticationManager.swift */,
+				2AACFE9C24420EDF0046B013 /* AuthKeys.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -181,6 +189,9 @@
 			dependencies = (
 			);
 			name = LastPassCloneSwiftUI;
+			packageProductDependencies = (
+				2AACFE9A24420DAB0046B013 /* KeychainSwift */,
+			);
 			productName = LastPassCloneSwiftUI;
 			productReference = 2AD34988243CA592005FDC60 /* LastPassCloneSwiftUI.app */;
 			productType = "com.apple.product-type.application";
@@ -209,6 +220,9 @@
 				Base,
 			);
 			mainGroup = 2AD3497F243CA592005FDC60;
+			packageReferences = (
+				2AACFE9924420DAB0046B013 /* XCRemoteSwiftPackageReference "keychain-swift" */,
+			);
 			productRefGroup = 2AD34989243CA592005FDC60 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -251,8 +265,10 @@
 				2AE80E99243F6304006D0233 /* AccountCreationView.swift in Sources */,
 				2AE80E8E243F6075006D0233 /* LCButton.swift in Sources */,
 				2AD3498C243CA592005FDC60 /* AppDelegate.swift in Sources */,
+				2AACFE9D24420EDF0046B013 /* AuthKeys.swift in Sources */,
 				2AD3498E243CA592005FDC60 /* SceneDelegate.swift in Sources */,
 				2AD34990243CA592005FDC60 /* ContentView.swift in Sources */,
+				2AACFE9F24420F060046B013 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -446,6 +462,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		2AACFE9924420DAB0046B013 /* XCRemoteSwiftPackageReference "keychain-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/evgenyneu/keychain-swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 19.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2AACFE9A24420DAB0046B013 /* KeychainSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2AACFE9924420DAB0046B013 /* XCRemoteSwiftPackageReference "keychain-swift" */;
+			productName = KeychainSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		2A8D562A243E02F000C6E1E7 /* SinglePass.xcdatamodeld */ = {

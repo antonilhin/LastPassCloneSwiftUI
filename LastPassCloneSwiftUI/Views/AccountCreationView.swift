@@ -10,14 +10,13 @@ import SwiftUI
 
 struct AccountCreationView: View {
     
-    @EnvironmentObject private var authManager: AuthenticationManager
-    
     @Binding var showLogin: Bool
     @State private var email = ""
     @State private var password = ""
     @State private var confirmedPassword = ""
     @State private var formOffset: CGFloat = 0
     
+    @EnvironmentObject private var authManager: AuthenticationManager
     
     fileprivate func goToLoginButton() -> some View {
         return Button(action: {
@@ -33,7 +32,6 @@ struct AccountCreationView: View {
                     .aspectRatio(contentMode: .fit)
                     .frame(height: 20)
                     .foregroundColor(Color.darkerAccent)
-                
             }
         }
     }
@@ -46,11 +44,14 @@ struct AccountCreationView: View {
                 Text("Create Account").font(.title).bold()
                 VStack(spacing: 30) {
                     SharedTextfield(value: self.$authManager.email,header: "Email", placeholder: "Your primary email",errorMessage: authManager.emailValidation.message)
-                    PasswordField(value: self.$authManager.password,header: "Password",  placeholder: "Make sure it's string",errorMessage: authManager.passwordValidation.message, isSecure: true)
-                    PasswordField(value: self.$authManager.confirmedPassword,header: "Confirm Password",  placeholder: "Must match the password", errorMessage: authManager.confirmedPasswordValidation.message, isSecure: true)
+                    PasswordField(value: self.$authManager.password,header: "Password",  placeholder: "Make sure it's string",errorMessage: authManager.passwordValidation.message,  trailingIconName: "doc.on.clipboard.fill" ,isSecure: true)
+                    PasswordField(value: self.$authManager.confirmedPassword,header: "Confirm Password",  placeholder: "Must match the password", errorMessage: authManager.confirmedPasswordValidation.message, trailingIconName: "doc.on.clipboard.fill", isSecure: true)
+                    Text(self.authManager.similarityValidation.message).foregroundColor(Color.red)
+                }
+                LCButton(text: "Sign up", backgroundColor: self.authManager.canSignup ? Color.accent : Color.gray ) { self.authManager.createAccount()
                     
                 }
-                LCButton(text: "Sign up", backgroundColor: self.authManager.canSignup ? Color.accent : Color.gray ) {}.disabled(!self.authManager.canSignup)
+//                .disabled(!self.authManager.canSignup)
                 
             }.modifier(FormModifier()).offset(y: self.formOffset)
             
