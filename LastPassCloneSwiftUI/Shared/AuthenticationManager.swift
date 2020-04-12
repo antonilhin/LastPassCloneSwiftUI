@@ -14,11 +14,19 @@ import CryptoKit
 
 class AuthenticationManager: ObservableObject {
     
-    private var cancellableSet: Set<AnyCancellable> = []
+    var cancellableSet: Set<AnyCancellable> = []
+    
+    enum BiometricResult {
+        case success
+        case failure
+        case none
+    }
     
     @Published var email = ""
     @Published var password = ""
     @Published var confirmedPassword = ""
+    
+    @Published var resetPassword = ""
     
     @Published var canLogin = false
     @Published var canSignup = false
@@ -27,16 +35,19 @@ class AuthenticationManager: ObservableObject {
     @Published var emailValidation = FormValidation()
     @Published var passwordValidation = FormValidation()
     @Published var confirmedPasswordValidation = FormValidation()
+    @Published var resetPasswordValidation = FormValidation()
     @Published var similarityValidation = FormValidation()
     
     private var userDefaults = UserDefaults.standard
     private var laContext = LAContext()
     
     @Published var isLoggedIn = false
+    @Published var biometricResult = BiometricResult.none
     @Published var userAccount = User()
     private var keychain = KeychainSwift()
     
     @Published var biometryType = LABiometryType.none
+    
     
     struct Config {
         static let recommendedLength = 6
@@ -64,6 +75,27 @@ class AuthenticationManager: ObservableObject {
     
     private var passwordPublisher: AnyPublisher<FormValidation, Never> {
         self.$password.debounce(for: 0.2, scheduler: RunLoop.main)
+            .removeDuplicates()
+            .map { password in
+                
+                if password.isEmpty{
+                    return FormValidation(success: false, message: "")
+                }
+                if password.count < Config.recommendedLength{
+                    return FormValidation(success: false, message: "The password length must be greater than \(Config.recommendedLength) ")
+                }
+                
+                
+                if !Config.passwordPredicate.evaluate(with: password){
+                    return FormValidation(success: false, message: "The password is must contain numbers, uppercase and special characters")
+                }
+                
+                return FormValidation(success: true, message: "")
+        }.eraseToAnyPublisher()
+    }
+    
+    private var resetPasswordPublisher: AnyPublisher<FormValidation, Never> {
+        self.$resetPassword.debounce(for: 0.2, scheduler: RunLoop.main)
             .removeDuplicates()
             .map { password in
                 
@@ -123,18 +155,18 @@ class AuthenticationManager: ObservableObject {
         }.eraseToAnyPublisher()
     }
     
-    private lazy var biometryPublisher: Future<Bool, Never> = {
-        Future<Bool, Never> {[unowned self] promise in
+    private lazy var biometryPublisher: Future<BiometricResult, Never> = {
+        Future<BiometricResult, Never> {[unowned self] promise in
             let myLocalizedReasonString = "Replace with your description explaining why you want to use biometrics"
             var authError: NSError?
             self.laContext.localizedFallbackTitle = "Please use your Passcode"
             if self.canAuthenticate(error: &authError) {
                 self.laContext.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: myLocalizedReasonString) { success, evaluateError in
-                    return  promise(.success(success))
+                    return  promise(.success(BiometricResult.success))
                 }
             } else {
                 print(authError ?? "")
-                return promise(.success(false))
+                return promise(.success(BiometricResult.failure))
             }
         }
     }()
@@ -158,6 +190,10 @@ class AuthenticationManager: ObservableObject {
             .assign(to: \.similarityValidation, on: self)
             .store(in: &self.cancellableSet)
         
+        resetPasswordPublisher
+            .assign(to: \.resetPasswordValidation, on: self)
+            .store(in: &self.cancellableSet)
+        
         // Login
         Publishers.CombineLatest(emailPublisher, passwordPublisher)
             .map { emailValidation, passwordValidation  in
@@ -174,31 +210,33 @@ class AuthenticationManager: ObservableObject {
         
     }
     
-    
     func hasAccount() -> Bool {
         guard let _ = keychain.get(AuthKeys.email)  else { return false }
         return true
     }
     
-    func createAccount()  {
-        guard !hasAccount() else { return }
+    func createAccount() -> Bool {
+        guard !hasAccount() else { return false }
         let hashedPassword = hashPassword(password)
         let emailResult = keychain.set(email.lowercased(), forKey: AuthKeys.email, withAccess: .accessibleWhenPasscodeSetThisDeviceOnly)
         let passwordResult = keychain.set(hashedPassword, forKey: AuthKeys.password, withAccess: .accessibleWhenPasscodeSetThisDeviceOnly)
         if emailResult && passwordResult {
             login()
+            return true
         }
+        
+        return false
     }
     
-    func login() {
+    private func login() {
         userDefaults.set(true, forKey: AuthKeys.isLoggedIn)
         self.isLoggedIn = true
     }
     
-    private func hashPassword(_ password: String) -> String {
+    private func hashPassword(_ password: String, reset: Bool = false) -> String {
         var salt = ""
         
-        if let savedSalt = keychain.get(AuthKeys.salt) {
+        if let savedSalt = keychain.get(AuthKeys.salt), !reset{
             salt = savedSalt
         } else {
             let key = SymmetricKey(size: .bits256)
@@ -211,15 +249,25 @@ class AuthenticationManager: ObservableObject {
         return digest.map{String(format: "%02hhx", $0)}.joined()
     }
     
+    func saveResetPassword() -> Bool {
+        let hashedPassword = hashPassword(resetPassword, reset: true)
+        let passwordResult = keychain.set(hashedPassword, forKey: AuthKeys.password, withAccess: .accessibleWhenPasscodeSetThisDeviceOnly)
+        return passwordResult
+    }
+    
     func authenticate() -> Bool{
+        if !hasAccount(){
+            return false
+        }
+        
         if let savedEmail = keychain.get(AuthKeys.email),
-            let savedPassword = keychain.get(AuthKeys.password),
-            let salt = keychain.get(AuthKeys.salt){
-            let hashedPassword = hashPassword("\(password)\(salt)")
+            let savedPassword = keychain.get(AuthKeys.password){
+            let hashedPassword = hashPassword(password)
             if savedEmail == email.lowercased() && hashedPassword == savedPassword{
                 login()
                 return true
             }
+            
         }
         return false
     }
@@ -240,14 +288,33 @@ class AuthenticationManager: ObservableObject {
         self.laContext.canEvaluatePolicy(.deviceOwnerAuthentication, error: error)
     }
     
+    func loginWithBiometric()  {
+        guard hasAccount() else { return }
+        biometryPublisher
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: { result in
+                switch result{
+                case .success:
+                    self.isLoggedIn = true
+                case .failure:
+                    self.isLoggedIn = false
+                    print("Error authenticating with biometrics")
+                case .none:
+                    break
+                }
+            })
+            .store(in: &self.cancellableSet)
+    }
+    
     func authenticateWithBiometric()  {
         guard hasAccount() else { return }
         biometryPublisher
             .receive(on: DispatchQueue.main)
-            .assign(to: \.isLoggedIn, on: self)
+            .assign(to: \.biometricResult, on: self)
             .store(in: &self.cancellableSet)
         
     }
+    
     
     func getBiometryType() {
         var authError: NSError?

@@ -15,11 +15,16 @@ struct AccountCreationView: View {
     @State private var password = ""
     @State private var confirmedPassword = ""
     @State private var formOffset: CGFloat = 0
-    
     @EnvironmentObject private var authManager: AuthenticationManager
+    
+    @State private var showAlert = false
+    
     
     fileprivate func goToLoginButton() -> some View {
         return Button(action: {
+            self.authManager.email = ""
+            self.authManager.password = ""
+            self.authManager.confirmedPassword = ""
             withAnimation(.spring() ) {
                 self.showLogin.toggle()
             }
@@ -32,6 +37,7 @@ struct AccountCreationView: View {
                     .aspectRatio(contentMode: .fit)
                     .frame(height: 20)
                     .foregroundColor(Color.darkerAccent)
+                
             }
         }
     }
@@ -47,11 +53,15 @@ struct AccountCreationView: View {
                     PasswordField(value: self.$authManager.password,header: "Password",  placeholder: "Make sure it's string",errorMessage: authManager.passwordValidation.message,  trailingIconName: "doc.on.clipboard.fill" ,isSecure: true)
                     PasswordField(value: self.$authManager.confirmedPassword,header: "Confirm Password",  placeholder: "Must match the password", errorMessage: authManager.confirmedPasswordValidation.message, trailingIconName: "doc.on.clipboard.fill", isSecure: true)
                     Text(self.authManager.similarityValidation.message).foregroundColor(Color.red)
-                }
-                LCButton(text: "Sign up", backgroundColor: self.authManager.canSignup ? Color.accent : Color.gray ) { self.authManager.createAccount()
                     
                 }
-//                .disabled(!self.authManager.canSignup)
+                LCButton(text: "Sign up", backgroundColor: self.authManager.canSignup ? Color.accent : Color.gray ) {
+                    self.showAlert = !self.authManager.createAccount()
+                }
+                .disabled(!self.authManager.canSignup)
+                .alert(isPresented: self.$showAlert) {
+                    Alert(title: Text("Error") , message: Text("Oops! Seems like there's already an account associated with this device. You need to login instead.") , dismissButton: .default(Text("Ok")) )
+                }
                 
             }.modifier(FormModifier()).offset(y: self.formOffset)
             

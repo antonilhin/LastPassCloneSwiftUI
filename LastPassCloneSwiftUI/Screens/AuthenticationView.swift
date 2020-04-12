@@ -10,16 +10,20 @@ import SwiftUI
 
 struct AuthenticationView: View {
     
-    @State private var showAccountCreationView = false
+    @State private var showCreateAccount = false
+    private let accountCreationTransition = AnyTransition.asymmetric(insertion: .move(edge: .leading), removal: .move(edge: .trailing))
+    private let loginTransition = AnyTransition.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading))
     
     var body: some View {
-        VStack {
-            if showAccountCreationView {
-                AccountCreationView(showLogin: self.$showAccountCreationView)
-                    .transition(.asymmetric(insertion: .move(edge: .leading), removal: .move(edge: .trailing)))
+        let accountCreationView = AccountCreationView(showLogin: self.$showCreateAccount)
+        let loginView = LoginView(showCreateAccount: self.$showCreateAccount)
+        
+        return VStack {
+
+            if showCreateAccount {
+                accountCreationView.transition(accountCreationTransition)
             } else {
-                LoginView(showCreateAccount: self.$showAccountCreationView)
-                    .transition(.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading)))
+                loginView.transition(loginTransition)
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -33,4 +37,5 @@ struct AuthenticationView_Previews: PreviewProvider {
         AuthenticationView()
     }
 }
+
 
