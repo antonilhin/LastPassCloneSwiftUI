@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		2A09EE5D24435D9D00F472C1 /* BiometricButtonLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A09EE5C24435D9D00F472C1 /* BiometricButtonLabel.swift */; };
+		2A2EE7A92445F89F00BE1AE7 /* NavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A2EE7A82445F89F00BE1AE7 /* NavBar.swift */; };
+		2A2EE7AC2445F99E00BE1AE7 /* CurvedShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A2EE7AB2445F99E00BE1AE7 /* CurvedShape.swift */; };
+		2A2EE7AE2445F9ED00BE1AE7 /* CurvedShapeModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A2EE7AD2445F9ED00BE1AE7 /* CurvedShapeModifier.swift */; };
+		2A2EE7B02445FB5B00BE1AE7 /* LCSearchField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A2EE7AF2445FB5B00BE1AE7 /* LCSearchField.swift */; };
 		2A8D562C243E02F000C6E1E7 /* SinglePass.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2A8D562A243E02F000C6E1E7 /* SinglePass.xcdatamodeld */; };
 		2A8D562F243E041400C6E1E7 /* ColorExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A8D562E243E041400C6E1E7 /* ColorExt.swift */; };
 		2AACFE9B24420DAB0046B013 /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2AACFE9A24420DAB0046B013 /* KeychainSwift */; };
@@ -35,6 +39,10 @@
 
 /* Begin PBXFileReference section */
 		2A09EE5C24435D9D00F472C1 /* BiometricButtonLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricButtonLabel.swift; sourceTree = "<group>"; };
+		2A2EE7A82445F89F00BE1AE7 /* NavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBar.swift; sourceTree = "<group>"; };
+		2A2EE7AB2445F99E00BE1AE7 /* CurvedShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurvedShape.swift; sourceTree = "<group>"; };
+		2A2EE7AD2445F9ED00BE1AE7 /* CurvedShapeModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurvedShapeModifier.swift; sourceTree = "<group>"; };
+		2A2EE7AF2445FB5B00BE1AE7 /* LCSearchField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LCSearchField.swift; sourceTree = "<group>"; };
 		2A8D562B243E02F000C6E1E7 /* SinglePass.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SinglePass.xcdatamodel; sourceTree = "<group>"; };
 		2A8D562E243E041400C6E1E7 /* ColorExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExt.swift; sourceTree = "<group>"; };
 		2AACFE9C24420EDF0046B013 /* AuthKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthKeys.swift; sourceTree = "<group>"; };
@@ -73,6 +81,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2A2EE7AA2445F98C00BE1AE7 /* Shapes */ = {
+			isa = PBXGroup;
+			children = (
+				2A2EE7AB2445F99E00BE1AE7 /* CurvedShape.swift */,
+			);
+			path = Shapes;
+			sourceTree = "<group>";
+		};
 		2A8D562D243E040000C6E1E7 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -110,6 +126,7 @@
 		2AD3498A243CA592005FDC60 /* LastPassCloneSwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				2A2EE7AA2445F98C00BE1AE7 /* Shapes */,
 				2AB49BD12440B6E0004F92B8 /* Models */,
 				2AE80E8F243F609F006D0233 /* Shared */,
 				2AE80E88243F5FE0006D0233 /* Views */,
@@ -141,6 +158,7 @@
 			children = (
 				2AE80E83243F5F16006D0233 /* NeumorphicEffect.swift */,
 				2AE80E94243F6113006D0233 /* FormModifier.swift */,
+				2A2EE7AD2445F9ED00BE1AE7 /* CurvedShapeModifier.swift */,
 			);
 			path = Modifiers;
 			sourceTree = "<group>";
@@ -162,6 +180,8 @@
 				2AE80E92243F60DA006D0233 /* LoginView.swift */,
 				2AE80E98243F6304006D0233 /* AccountCreationView.swift */,
 				2A09EE5C24435D9D00F472C1 /* BiometricButtonLabel.swift */,
+				2A2EE7A82445F89F00BE1AE7 /* NavBar.swift */,
+				2A2EE7AF2445FB5B00BE1AE7 /* LCSearchField.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -263,12 +283,16 @@
 				2AE80E8C243F603D006D0233 /* PasswordField.swift in Sources */,
 				2AE80E93243F60DA006D0233 /* LoginView.swift in Sources */,
 				2AB49BD32440B6F9004F92B8 /* FormValidation.swift in Sources */,
+				2A2EE7AC2445F99E00BE1AE7 /* CurvedShape.swift in Sources */,
 				2AE80E87243F5F65006D0233 /* AuthenticationView.swift in Sources */,
+				2A2EE7A92445F89F00BE1AE7 /* NavBar.swift in Sources */,
 				2AE80E97243F616E006D0233 /* NotificationCenterExt.swift in Sources */,
 				2AE80E99243F6304006D0233 /* AccountCreationView.swift in Sources */,
+				2A2EE7B02445FB5B00BE1AE7 /* LCSearchField.swift in Sources */,
 				2AE80E8E243F6075006D0233 /* LCButton.swift in Sources */,
 				2AD3498C243CA592005FDC60 /* AppDelegate.swift in Sources */,
 				2AACFE9D24420EDF0046B013 /* AuthKeys.swift in Sources */,
+				2A2EE7AE2445F9ED00BE1AE7 /* CurvedShapeModifier.swift in Sources */,
 				2AD3498E243CA592005FDC60 /* SceneDelegate.swift in Sources */,
 				2AD34990243CA592005FDC60 /* ContentView.swift in Sources */,
 				2AACFE9F24420F060046B013 /* User.swift in Sources */,
