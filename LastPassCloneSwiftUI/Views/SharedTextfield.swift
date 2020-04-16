@@ -11,6 +11,7 @@ import SwiftUI
 struct SharedTextfield: View {
     
     @Binding var value: String
+    
     var header = "Username"
     var placeholder = "Your username or email"
     var trailingIconName = ""

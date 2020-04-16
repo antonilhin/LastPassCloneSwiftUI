@@ -23,7 +23,6 @@ struct BiometricButtonLabel: View {
     }
 }
 
-
 struct BiometricButtonLabel_Previews: PreviewProvider {
     static var previews: some View {
         BiometricButtonLabel()

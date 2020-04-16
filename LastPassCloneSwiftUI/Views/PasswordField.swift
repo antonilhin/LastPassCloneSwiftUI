@@ -36,7 +36,6 @@ struct PasswordField: View {
                     }).padding(.vertical, 15).opacity(isSecure ? 0 : 1)
                 }
                 
-                
                 HStack {
                     if isSecure{
                         Image(systemName: "eye.slash").foregroundColor(Color.gray).onTapGesture {

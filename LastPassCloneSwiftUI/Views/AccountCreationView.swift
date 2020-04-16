@@ -19,7 +19,6 @@ struct AccountCreationView: View {
     
     @State private var showAlert = false
     
-    
     fileprivate func goToLoginButton() -> some View {
         return Button(action: {
             self.authManager.email = ""
@@ -70,7 +69,6 @@ struct AccountCreationView: View {
     }
     
     var body: some View {
-        
         SubscriptionView(content: createContent(), publisher: NotificationCenter.keyboardPublisher) { frame in
             withAnimation {
                 self.formOffset = frame.height > 0 ? -200 : 0

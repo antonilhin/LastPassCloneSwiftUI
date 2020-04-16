@@ -19,7 +19,6 @@ struct NavBar: View {
     var body: some View {
         ZStack(alignment: .bottom) {
             HStack {
-                
                 Rectangle()
                     .foregroundColor(Color.clear)
                     .frame(width: 20, height: 20)
@@ -29,7 +28,6 @@ struct NavBar: View {
                     .font(.title)
                     .bold()
                     .foregroundColor(Color.white)
-                
                 Spacer()
                 Image(systemName: "line.horizontal.3")
                     .resizable()
@@ -37,7 +35,6 @@ struct NavBar: View {
                     .imageScale(.large)
                     .foregroundColor(Color.white)
                     .padding(.trailing)
-                    
             }
             .padding(.bottom, 20)
             .frame(maxWidth: .infinity)
@@ -46,16 +43,16 @@ struct NavBar: View {
             .clip(shouldCurve: showSearchField)
             
             if showSearchField{
-                           LCSearchField(value: self.$searchTerm)
-                               .padding()
-                               .offset(y: 15)
-                       }
+                LCSearchField(value: self.$searchTerm)
+                    .padding()
+                    .offset(y: 15)
+            }
         }
     }
 }
 
 struct NavBar_Previews: PreviewProvider {
-   static var previews: some View {
+    static var previews: some View {
         NavBar(showMenu: .constant(false)).previewLayout(.sizeThatFits)
     }
 }

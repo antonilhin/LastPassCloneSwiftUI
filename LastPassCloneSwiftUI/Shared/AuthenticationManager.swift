@@ -25,12 +25,10 @@ class AuthenticationManager: ObservableObject {
     @Published var email = ""
     @Published var password = ""
     @Published var confirmedPassword = ""
-    
     @Published var resetPassword = ""
     
     @Published var canLogin = false
     @Published var canSignup = false
-    
     
     @Published var emailValidation = FormValidation()
     @Published var passwordValidation = FormValidation()
@@ -44,10 +42,10 @@ class AuthenticationManager: ObservableObject {
     @Published var isLoggedIn = false
     @Published var biometricResult = BiometricResult.none
     @Published var userAccount = User()
+    
     private var keychain = KeychainSwift()
     
     @Published var biometryType = LABiometryType.none
-    
     
     struct Config {
         static let recommendedLength = 6
@@ -118,7 +116,6 @@ class AuthenticationManager: ObservableObject {
     private var confirmPasswordPublisher: AnyPublisher<FormValidation, Never> {
         self.$confirmedPassword.debounce(for: 0.2, scheduler: RunLoop.main)
             .removeDuplicates()
-            
             .map { password in
                 
                 if password.isEmpty{
@@ -129,13 +126,10 @@ class AuthenticationManager: ObservableObject {
                     return FormValidation(success: false, message: "The password length must be greater than \(Config.recommendedLength) ")
                 }
                 
-                
-                
                 if !Config.passwordPredicate.evaluate(with: password){
                     return FormValidation(success: false, message: "The password is must contain numbers, uppercase and special characters")
                 }
-                
-                
+
                 return FormValidation(success: true, message: "")
         }.eraseToAnyPublisher()
     }
@@ -151,6 +145,7 @@ class AuthenticationManager: ObservableObject {
                 if password != confirmedPassword{
                     return FormValidation(success: false, message: "Passwords do not match!")
                 }
+                
                 return FormValidation(success: true, message: "")
         }.eraseToAnyPublisher()
     }
@@ -267,7 +262,6 @@ class AuthenticationManager: ObservableObject {
                 login()
                 return true
             }
-            
         }
         return false
     }

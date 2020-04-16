@@ -18,7 +18,6 @@ struct LoginView: View {
     @State private var showAlert = false
     @State private var showResetPasswordPopup = false
     
-    
     @EnvironmentObject private var authManager: AuthenticationManager
     
     fileprivate func createAccountButton() -> some View {
@@ -147,7 +146,6 @@ struct LoginView: View {
                             return Alert(title: Text("Error") , message: Text("Oops! You don't have an account yet, sign uo instead.") , dismissButton: Alert.Button.default(Text("Ok")) )
                     }
                     
-                    
                     if self.authManager.hasAccount(){
                         createBiometricButton {
                             self.authManager.loginWithBiometric()
@@ -179,7 +177,6 @@ struct LoginView: View {
                     self.formOffset = frame.height > 0 ? -150 : 0
                 }
             }
-            
             VStack{
                 if showResetPasswordPopup{
                     showPopups()
@@ -189,9 +186,7 @@ struct LoginView: View {
             }.frame(maxWidth: .infinity, maxHeight: .infinity)
                 .background(Color.black.opacity(0.6))
                 .opacity(showResetPasswordPopup ? 1 : 0)
-                .animation(.spring())
-            
-            
+                .animation(.spring())    
         }
     }
 }

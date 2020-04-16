@@ -11,6 +11,7 @@ import SwiftUI
 struct AuthenticationView: View {
     
     @State private var showCreateAccount = false
+    
     private let accountCreationTransition = AnyTransition.asymmetric(insertion: .move(edge: .leading), removal: .move(edge: .trailing))
     private let loginTransition = AnyTransition.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading))
     
@@ -19,7 +20,7 @@ struct AuthenticationView: View {
         let loginView = LoginView(showCreateAccount: self.$showCreateAccount)
         
         return VStack {
-
+            
             if showCreateAccount {
                 accountCreationView.transition(accountCreationTransition)
             } else {
@@ -28,7 +29,7 @@ struct AuthenticationView: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.background)
-         .edgesIgnoringSafeArea(.all)
+        .edgesIgnoringSafeArea(.all)
     }
 }
 
