@@ -10,22 +10,29 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject private var authManager: AuthenticationManager
-    
+    @State private var showMenu = false
     var body: some View {
         
         ZStack{
             if authManager.isLoggedIn{
-                Text("Coming soon").font(.title).bold()
+                VStack {
+                    NavBar(showMenu: self.$showMenu)
+                    HomeView()
+                }
             } else {
                 AuthenticationView()
             }
         }
+        .edgesIgnoringSafeArea(.top)
+        .background(Color.background)
     }
     
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        let auth = AuthenticationManager()
+        auth.isLoggedIn = true
+        return ContentView().environmentObject(auth)
     }
 }

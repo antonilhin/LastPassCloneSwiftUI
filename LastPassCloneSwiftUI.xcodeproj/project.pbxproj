@@ -22,6 +22,9 @@
 		2AACFE9F24420F060046B013 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AACFE9E24420F060046B013 /* User.swift */; };
 		2AB49BD02440B6DD004F92B8 /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB49BCF2440B6DD004F92B8 /* AuthenticationManager.swift */; };
 		2AB49BD32440B6F9004F92B8 /* FormValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB49BD22440B6F9004F92B8 /* FormValidation.swift */; };
+		2AD0942C2458743A00E5C18F /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD0942B2458743A00E5C18F /* HomeView.swift */; };
+		2AD0942E2458745C00E5C18F /* RowItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD0942D2458745C00E5C18F /* RowItems.swift */; };
+		2AD09430245875A700E5C18F /* SectionTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD0942F245875A700E5C18F /* SectionTitle.swift */; };
 		2AD3498C243CA592005FDC60 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD3498B243CA592005FDC60 /* AppDelegate.swift */; };
 		2AD3498E243CA592005FDC60 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD3498D243CA592005FDC60 /* SceneDelegate.swift */; };
 		2AD34990243CA592005FDC60 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD3498F243CA592005FDC60 /* ContentView.swift */; };
@@ -55,6 +58,9 @@
 		2AACFE9E24420F060046B013 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		2AB49BCF2440B6DD004F92B8 /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
 		2AB49BD22440B6F9004F92B8 /* FormValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormValidation.swift; sourceTree = "<group>"; };
+		2AD0942B2458743A00E5C18F /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		2AD0942D2458745C00E5C18F /* RowItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowItems.swift; sourceTree = "<group>"; };
+		2AD0942F245875A700E5C18F /* SectionTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionTitle.swift; sourceTree = "<group>"; };
 		2AD34988243CA592005FDC60 /* LastPassCloneSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LastPassCloneSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2AD3498B243CA592005FDC60 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2AD3498D243CA592005FDC60 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -182,6 +188,7 @@
 			isa = PBXGroup;
 			children = (
 				2AE80E86243F5F65006D0233 /* AuthenticationView.swift */,
+				2AD0942B2458743A00E5C18F /* HomeView.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -199,6 +206,8 @@
 				2A2EE7AF2445FB5B00BE1AE7 /* LCSearchField.swift */,
 				2AA1D696244F28E400AC8318 /* FilterView.swift */,
 				2AA1D69B244F2C7E00AC8318 /* HeaderView.swift */,
+				2AD0942D2458745C00E5C18F /* RowItems.swift */,
+				2AD0942F245875A700E5C18F /* SectionTitle.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -291,12 +300,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				2AE80E8A243F5FF1006D0233 /* SharedTextfield.swift in Sources */,
+				2AD0942C2458743A00E5C18F /* HomeView.swift in Sources */,
 				2AB49BD02440B6DD004F92B8 /* AuthenticationManager.swift in Sources */,
 				2A8D562C243E02F000C6E1E7 /* SinglePass.xcdatamodeld in Sources */,
 				2AE80E95243F6113006D0233 /* FormModifier.swift in Sources */,
 				2AE80E91243F60AB006D0233 /* HapticFeedback.swift in Sources */,
 				2A8D562F243E041400C6E1E7 /* ColorExt.swift in Sources */,
 				2AE80E84243F5F16006D0233 /* NeumorphicEffect.swift in Sources */,
+				2AD0942E2458745C00E5C18F /* RowItems.swift in Sources */,
 				2AE80E8C243F603D006D0233 /* PasswordField.swift in Sources */,
 				2AA1D697244F28E400AC8318 /* FilterView.swift in Sources */,
 				2AE80E93243F60DA006D0233 /* LoginView.swift in Sources */,
@@ -308,6 +319,7 @@
 				2AE80E99243F6304006D0233 /* AccountCreationView.swift in Sources */,
 				2A2EE7B02445FB5B00BE1AE7 /* LCSearchField.swift in Sources */,
 				2AE80E8E243F6075006D0233 /* LCButton.swift in Sources */,
+				2AD09430245875A700E5C18F /* SectionTitle.swift in Sources */,
 				2AD3498C243CA592005FDC60 /* AppDelegate.swift in Sources */,
 				2AA1D69C244F2C7E00AC8318 /* HeaderView.swift in Sources */,
 				2AACFE9D24420EDF0046B013 /* AuthKeys.swift in Sources */,
