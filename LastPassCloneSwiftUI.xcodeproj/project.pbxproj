@@ -12,6 +12,10 @@
 		2A2EE7AC2445F99E00BE1AE7 /* CurvedShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A2EE7AB2445F99E00BE1AE7 /* CurvedShape.swift */; };
 		2A2EE7AE2445F9ED00BE1AE7 /* CurvedShapeModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A2EE7AD2445F9ED00BE1AE7 /* CurvedShapeModifier.swift */; };
 		2A2EE7B02445FB5B00BE1AE7 /* LCSearchField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A2EE7AF2445FB5B00BE1AE7 /* LCSearchField.swift */; };
+		2A81C2FE24616480009E257D /* FormType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A81C2FD24616480009E257D /* FormType.swift */; };
+		2A81C300246164C6009E257D /* FormHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A81C2FF246164C6009E257D /* FormHeader.swift */; };
+		2A81C3022461654F009E257D /* StringExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A81C3012461654F009E257D /* StringExt.swift */; };
+		2A81C30424616AC0009E257D /* EditFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A81C30324616AC0009E257D /* EditFormView.swift */; };
 		2A8D562C243E02F000C6E1E7 /* SinglePass.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2A8D562A243E02F000C6E1E7 /* SinglePass.xcdatamodeld */; };
 		2A8D562F243E041400C6E1E7 /* ColorExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A8D562E243E041400C6E1E7 /* ColorExt.swift */; };
 		2AA1D697244F28E400AC8318 /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA1D696244F28E400AC8318 /* FilterView.swift */; };
@@ -49,6 +53,10 @@
 		2A2EE7AB2445F99E00BE1AE7 /* CurvedShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurvedShape.swift; sourceTree = "<group>"; };
 		2A2EE7AD2445F9ED00BE1AE7 /* CurvedShapeModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurvedShapeModifier.swift; sourceTree = "<group>"; };
 		2A2EE7AF2445FB5B00BE1AE7 /* LCSearchField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LCSearchField.swift; sourceTree = "<group>"; };
+		2A81C2FD24616480009E257D /* FormType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormType.swift; sourceTree = "<group>"; };
+		2A81C2FF246164C6009E257D /* FormHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormHeader.swift; sourceTree = "<group>"; };
+		2A81C3012461654F009E257D /* StringExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExt.swift; sourceTree = "<group>"; };
+		2A81C30324616AC0009E257D /* EditFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditFormView.swift; sourceTree = "<group>"; };
 		2A8D562B243E02F000C6E1E7 /* SinglePass.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SinglePass.xcdatamodel; sourceTree = "<group>"; };
 		2A8D562E243E041400C6E1E7 /* ColorExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExt.swift; sourceTree = "<group>"; };
 		2AA1D696244F28E400AC8318 /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
@@ -106,6 +114,7 @@
 			children = (
 				2A8D562E243E041400C6E1E7 /* ColorExt.swift */,
 				2AE80E96243F616E006D0233 /* NotificationCenterExt.swift */,
+				2A81C3012461654F009E257D /* StringExt.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -114,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				2AA1D699244F29C400AC8318 /* Filter.swift */,
+				2A81C2FD24616480009E257D /* FormType.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -208,6 +218,8 @@
 				2AA1D69B244F2C7E00AC8318 /* HeaderView.swift */,
 				2AD0942D2458745C00E5C18F /* RowItems.swift */,
 				2AD0942F245875A700E5C18F /* SectionTitle.swift */,
+				2A81C2FF246164C6009E257D /* FormHeader.swift */,
+				2A81C30324616AC0009E257D /* EditFormView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -300,6 +312,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2AE80E8A243F5FF1006D0233 /* SharedTextfield.swift in Sources */,
+				2A81C3022461654F009E257D /* StringExt.swift in Sources */,
 				2AD0942C2458743A00E5C18F /* HomeView.swift in Sources */,
 				2AB49BD02440B6DD004F92B8 /* AuthenticationManager.swift in Sources */,
 				2A8D562C243E02F000C6E1E7 /* SinglePass.xcdatamodeld in Sources */,
@@ -307,6 +320,7 @@
 				2AE80E91243F60AB006D0233 /* HapticFeedback.swift in Sources */,
 				2A8D562F243E041400C6E1E7 /* ColorExt.swift in Sources */,
 				2AE80E84243F5F16006D0233 /* NeumorphicEffect.swift in Sources */,
+				2A81C300246164C6009E257D /* FormHeader.swift in Sources */,
 				2AD0942E2458745C00E5C18F /* RowItems.swift in Sources */,
 				2AE80E8C243F603D006D0233 /* PasswordField.swift in Sources */,
 				2AA1D697244F28E400AC8318 /* FilterView.swift in Sources */,
@@ -321,6 +335,7 @@
 				2AE80E8E243F6075006D0233 /* LCButton.swift in Sources */,
 				2AD09430245875A700E5C18F /* SectionTitle.swift in Sources */,
 				2AD3498C243CA592005FDC60 /* AppDelegate.swift in Sources */,
+				2A81C30424616AC0009E257D /* EditFormView.swift in Sources */,
 				2AA1D69C244F2C7E00AC8318 /* HeaderView.swift in Sources */,
 				2AACFE9D24420EDF0046B013 /* AuthKeys.swift in Sources */,
 				2A2EE7AE2445F9ED00BE1AE7 /* CurvedShapeModifier.swift in Sources */,
@@ -329,6 +344,7 @@
 				2AA1D69A244F29C400AC8318 /* Filter.swift in Sources */,
 				2AACFE9F24420F060046B013 /* User.swift in Sources */,
 				2A09EE5D24435D9D00F472C1 /* BiometricButtonLabel.swift in Sources */,
+				2A81C2FE24616480009E257D /* FormType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
