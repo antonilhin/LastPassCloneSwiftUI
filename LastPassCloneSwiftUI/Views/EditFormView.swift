@@ -61,6 +61,7 @@ struct EditFormView: View {
         .cornerRadius(20)
         .padding().padding(.top, 40)
         .neumorphic()
+        .offset(x: 0, y: self.formOffsetY)
     }
     
     

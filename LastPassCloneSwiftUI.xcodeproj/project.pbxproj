@@ -20,6 +20,13 @@
 		2A623D312556922100845695 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A623D302556922100845695 /* CoreDataManager.swift */; };
 		2A623D352556962900845695 /* FetchResultWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A623D342556962900845695 /* FetchResultWrapper.swift */; };
 		2A623D38255698F800845695 /* DateExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A623D37255698F800845695 /* DateExt.swift */; };
+		2A623D3C2556A18D00845695 /* Sreens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A623D3B2556A18D00845695 /* Sreens.swift */; };
+		2A623D3F2556A1B100845695 /* MenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A623D3E2556A1B100845695 /* MenuItem.swift */; };
+		2A623D472556A41D00845695 /* MenuContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A623D462556A41D00845695 /* MenuContent.swift */; };
+		2A623D4A2556A4D200845695 /* GoPremiumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A623D492556A4D200845695 /* GoPremiumView.swift */; };
+		2A623D4D2556A4E800845695 /* SecurityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A623D4C2556A4E800845695 /* SecurityView.swift */; };
+		2A623D502556A4F700845695 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A623D4F2556A4F700845695 /* SettingsView.swift */; };
+		2A623D532556A5A900845695 /* SettingItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A623D522556A5A900845695 /* SettingItems.swift */; };
 		2A6754292469856100B7B8BD /* PasswordGeneratorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6754282469856100B7B8BD /* PasswordGeneratorView.swift */; };
 		2A67542C2469862800B7B8BD /* CustomToggleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A67542B2469862800B7B8BD /* CustomToggleStyle.swift */; };
 		2A67542F2469888000B7B8BD /* LinearGradientExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A67542E2469888000B7B8BD /* LinearGradientExt.swift */; };
@@ -73,6 +80,13 @@
 		2A623D302556922100845695 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		2A623D342556962900845695 /* FetchResultWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchResultWrapper.swift; sourceTree = "<group>"; };
 		2A623D37255698F800845695 /* DateExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExt.swift; sourceTree = "<group>"; };
+		2A623D3B2556A18D00845695 /* Sreens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sreens.swift; sourceTree = "<group>"; };
+		2A623D3E2556A1B100845695 /* MenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItem.swift; sourceTree = "<group>"; };
+		2A623D462556A41D00845695 /* MenuContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuContent.swift; sourceTree = "<group>"; };
+		2A623D492556A4D200845695 /* GoPremiumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoPremiumView.swift; sourceTree = "<group>"; };
+		2A623D4C2556A4E800845695 /* SecurityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityView.swift; sourceTree = "<group>"; };
+		2A623D4F2556A4F700845695 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		2A623D522556A5A900845695 /* SettingItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingItems.swift; sourceTree = "<group>"; };
 		2A6754282469856100B7B8BD /* PasswordGeneratorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordGeneratorView.swift; sourceTree = "<group>"; };
 		2A67542B2469862800B7B8BD /* CustomToggleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomToggleStyle.swift; sourceTree = "<group>"; };
 		2A67542E2469888000B7B8BD /* LinearGradientExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinearGradientExt.swift; sourceTree = "<group>"; };
@@ -177,6 +191,8 @@
 			children = (
 				2AA1D699244F29C400AC8318 /* Filter.swift */,
 				2A81C2FD24616480009E257D /* FormType.swift */,
+				2A623D3B2556A18D00845695 /* Sreens.swift */,
+				2A623D522556A5A900845695 /* SettingItems.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -257,6 +273,9 @@
 			children = (
 				2AE80E86243F5F65006D0233 /* AuthenticationView.swift */,
 				2AD0942B2458743A00E5C18F /* HomeView.swift */,
+				2A623D492556A4D200845695 /* GoPremiumView.swift */,
+				2A623D4C2556A4E800845695 /* SecurityView.swift */,
+				2A623D4F2556A4F700845695 /* SettingsView.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -280,6 +299,8 @@
 				2A81C30324616AC0009E257D /* EditFormView.swift */,
 				2A6754282469856100B7B8BD /* PasswordGeneratorView.swift */,
 				2A623D342556962900845695 /* FetchResultWrapper.swift */,
+				2A623D3E2556A1B100845695 /* MenuItem.swift */,
+				2A623D462556A41D00845695 /* MenuContent.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -383,6 +404,7 @@
 				2A8D562F243E041400C6E1E7 /* ColorExt.swift in Sources */,
 				2A623D312556922100845695 /* CoreDataManager.swift in Sources */,
 				2AE80E84243F5F16006D0233 /* NeumorphicEffect.swift in Sources */,
+				2A623D4A2556A4D200845695 /* GoPremiumView.swift in Sources */,
 				2A623D352556962900845695 /* FetchResultWrapper.swift in Sources */,
 				2A81C300246164C6009E257D /* FormHeader.swift in Sources */,
 				2AD0942E2458745C00E5C18F /* RowItems.swift in Sources */,
@@ -395,6 +417,7 @@
 				2A2EE7A92445F89F00BE1AE7 /* NavBar.swift in Sources */,
 				2AE80E97243F616E006D0233 /* NotificationCenterExt.swift in Sources */,
 				2AE80E99243F6304006D0233 /* AccountCreationView.swift in Sources */,
+				2A623D502556A4F700845695 /* SettingsView.swift in Sources */,
 				2A67542C2469862800B7B8BD /* CustomToggleStyle.swift in Sources */,
 				2A6754292469856100B7B8BD /* PasswordGeneratorView.swift in Sources */,
 				2A2EE7B02445FB5B00BE1AE7 /* LCSearchField.swift in Sources */,
@@ -405,17 +428,22 @@
 				2AD3498C243CA592005FDC60 /* AppDelegate.swift in Sources */,
 				2A623D2525568F1700845695 /* NoteItem.swift in Sources */,
 				2A81C30424616AC0009E257D /* EditFormView.swift in Sources */,
+				2A623D532556A5A900845695 /* SettingItems.swift in Sources */,
 				2AA1D69C244F2C7E00AC8318 /* HeaderView.swift in Sources */,
 				2A675431246988BF00B7B8BD /* ViewExt.swift in Sources */,
 				2AACFE9D24420EDF0046B013 /* AuthKeys.swift in Sources */,
+				2A623D3C2556A18D00845695 /* Sreens.swift in Sources */,
 				2A2EE7AE2445F9ED00BE1AE7 /* CurvedShapeModifier.swift in Sources */,
 				2AD3498E243CA592005FDC60 /* SceneDelegate.swift in Sources */,
 				2AD34990243CA592005FDC60 /* ContentView.swift in Sources */,
 				2AA1D69A244F29C400AC8318 /* Filter.swift in Sources */,
 				2A623D38255698F800845695 /* DateExt.swift in Sources */,
+				2A623D4D2556A4E800845695 /* SecurityView.swift in Sources */,
 				2AACFE9F24420F060046B013 /* User.swift in Sources */,
 				2A67542F2469888000B7B8BD /* LinearGradientExt.swift in Sources */,
+				2A623D3F2556A1B100845695 /* MenuItem.swift in Sources */,
 				2A09EE5D24435D9D00F472C1 /* BiometricButtonLabel.swift in Sources */,
+				2A623D472556A41D00845695 /* MenuContent.swift in Sources */,
 				2A81C2FE24616480009E257D /* FormType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
