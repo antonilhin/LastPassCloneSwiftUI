@@ -11,8 +11,10 @@ import SwiftUI
 struct HomeView: View {
     
     @State var showEditFormView = false
+    @ObservedObject var coredataManager = CoreDataManager.shared
     
     var body: some View {
+        
         ZStack(alignment: .bottomTrailing) {
             VStack {
                 HeaderView { filter in }
@@ -25,37 +27,55 @@ struct HomeView: View {
     
     private func createList() -> some View {
         List{
-            createPasswordsSection()
-            createNotesSection()
-        }
-        .onAppear {
+            
+            if self.coredataManager.showPasswords{
+                createPasswordsSection()
+            }
+            
+            if self .coredataManager.showNotes {
+                createNotesSection()
+            }
+        }.onAppear {
             UITableView.appearance().backgroundColor = UIColor(named: "bg")
-            UITableView.appearance().separatorColor = .clear
+            UITableView.appearance().separatorColor = UIColor(named: "bg")
             UITableView.appearance().showsVerticalScrollIndicator = false
         }
     }
     
     private func createPasswordsSection() -> some View {
-        Section(header:
-            SectionTitle(title: "Passwords")
-        ) {
-            ForEach(1..<5) { i in
-                RowItems().listRowBackground(Color.background)
+        
+        FetchResultWrapper(predicate: self.coredataManager.passwordPredicate, sortDescriptors: [self.coredataManager.sortDescriptor]) { (passwords: [PasswordItem]) in
+            
+            if !passwords.isEmpty {
+                Section(header:
+                            SectionTitle(title: "Passwords")
+                ) {
+                    ForEach(passwords.map { PasswordViewModel(passwordItem: $0) } ) { password in
+                        RowItems(passwordModel: password).listRowBackground(Color.background)
+                    }
+                }
             }
         }
     }
     
     private func createNotesSection() -> some View {
-        Section(header:
-            SectionTitle(title: "Notes")
-        ) {
-            ForEach(1..<5) { i in
-                RowItems().listRowBackground(Color.background)
+        
+        FetchResultWrapper(predicate: self.coredataManager.notePredicate, sortDescriptors: [self.coredataManager.sortDescriptor]) { (notes: [NoteItem]) in
+            
+            if !notes.isEmpty {
+                Section(header:
+                            SectionTitle(title: "Notes")
+                ) {
+                    ForEach(notes.map { NoteViewModel(noteItem: $0) } ) { note in
+                        RowItems(noteModel: note).listRowBackground(Color.background)
+                    }
+                }
             }
         }
     }
     
     fileprivate func createFloatingButton() -> some View {
+        
         Button(action: {
             HapticFeedback.generate()
             self.showEditFormView.toggle()
@@ -72,11 +92,16 @@ struct HomeView: View {
         }.padding(30)
         .sheet(isPresented: self.$showEditFormView) {
             self.createEditFormView()
+            
         }
     }
     
     fileprivate func createEditFormView() -> some View {
-        EditFormView(showDetails: .constant(false))
+        EditFormView(showDetails: self.$showEditFormView)
+            .padding(.bottom)
+            .background(Color.background)
+            .edgesIgnoringSafeArea(.all)
+        
     }
 }
 

@@ -18,6 +18,8 @@
 		2A623D2925568F6300845695 /* PasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A623D2825568F6300845695 /* PasswordViewModel.swift */; };
 		2A623D2D25568F6C00845695 /* NoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A623D2C25568F6C00845695 /* NoteViewModel.swift */; };
 		2A623D312556922100845695 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A623D302556922100845695 /* CoreDataManager.swift */; };
+		2A623D352556962900845695 /* FetchResultWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A623D342556962900845695 /* FetchResultWrapper.swift */; };
+		2A623D38255698F800845695 /* DateExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A623D37255698F800845695 /* DateExt.swift */; };
 		2A6754292469856100B7B8BD /* PasswordGeneratorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6754282469856100B7B8BD /* PasswordGeneratorView.swift */; };
 		2A67542C2469862800B7B8BD /* CustomToggleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A67542B2469862800B7B8BD /* CustomToggleStyle.swift */; };
 		2A67542F2469888000B7B8BD /* LinearGradientExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A67542E2469888000B7B8BD /* LinearGradientExt.swift */; };
@@ -69,6 +71,8 @@
 		2A623D2825568F6300845695 /* PasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordViewModel.swift; sourceTree = "<group>"; };
 		2A623D2C25568F6C00845695 /* NoteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteViewModel.swift; sourceTree = "<group>"; };
 		2A623D302556922100845695 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		2A623D342556962900845695 /* FetchResultWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchResultWrapper.swift; sourceTree = "<group>"; };
+		2A623D37255698F800845695 /* DateExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExt.swift; sourceTree = "<group>"; };
 		2A6754282469856100B7B8BD /* PasswordGeneratorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordGeneratorView.swift; sourceTree = "<group>"; };
 		2A67542B2469862800B7B8BD /* CustomToggleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomToggleStyle.swift; sourceTree = "<group>"; };
 		2A67542E2469888000B7B8BD /* LinearGradientExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinearGradientExt.swift; sourceTree = "<group>"; };
@@ -163,6 +167,7 @@
 				2A81C3012461654F009E257D /* StringExt.swift */,
 				2A67542E2469888000B7B8BD /* LinearGradientExt.swift */,
 				2A675430246988BF00B7B8BD /* ViewExt.swift */,
+				2A623D37255698F800845695 /* DateExt.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -274,6 +279,7 @@
 				2A81C2FF246164C6009E257D /* FormHeader.swift */,
 				2A81C30324616AC0009E257D /* EditFormView.swift */,
 				2A6754282469856100B7B8BD /* PasswordGeneratorView.swift */,
+				2A623D342556962900845695 /* FetchResultWrapper.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -377,6 +383,7 @@
 				2A8D562F243E041400C6E1E7 /* ColorExt.swift in Sources */,
 				2A623D312556922100845695 /* CoreDataManager.swift in Sources */,
 				2AE80E84243F5F16006D0233 /* NeumorphicEffect.swift in Sources */,
+				2A623D352556962900845695 /* FetchResultWrapper.swift in Sources */,
 				2A81C300246164C6009E257D /* FormHeader.swift in Sources */,
 				2AD0942E2458745C00E5C18F /* RowItems.swift in Sources */,
 				2AE80E8C243F603D006D0233 /* PasswordField.swift in Sources */,
@@ -405,6 +412,7 @@
 				2AD3498E243CA592005FDC60 /* SceneDelegate.swift in Sources */,
 				2AD34990243CA592005FDC60 /* ContentView.swift in Sources */,
 				2AA1D69A244F29C400AC8318 /* Filter.swift in Sources */,
+				2A623D38255698F800845695 /* DateExt.swift in Sources */,
 				2AACFE9F24420F060046B013 /* User.swift in Sources */,
 				2A67542F2469888000B7B8BD /* LinearGradientExt.swift in Sources */,
 				2A09EE5D24435D9D00F472C1 /* BiometricButtonLabel.swift in Sources */,
