@@ -12,6 +12,7 @@
 		2A2EE7AC2445F99E00BE1AE7 /* CurvedShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A2EE7AB2445F99E00BE1AE7 /* CurvedShape.swift */; };
 		2A2EE7AE2445F9ED00BE1AE7 /* CurvedShapeModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A2EE7AD2445F9ED00BE1AE7 /* CurvedShapeModifier.swift */; };
 		2A2EE7B02445FB5B00BE1AE7 /* LCSearchField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A2EE7AF2445FB5B00BE1AE7 /* LCSearchField.swift */; };
+		2A623D1D255684CA00845695 /* PasswordGeneratorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A623D1C255684CA00845695 /* PasswordGeneratorService.swift */; };
 		2A6754292469856100B7B8BD /* PasswordGeneratorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6754282469856100B7B8BD /* PasswordGeneratorView.swift */; };
 		2A67542C2469862800B7B8BD /* CustomToggleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A67542B2469862800B7B8BD /* CustomToggleStyle.swift */; };
 		2A67542F2469888000B7B8BD /* LinearGradientExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A67542E2469888000B7B8BD /* LinearGradientExt.swift */; };
@@ -57,6 +58,7 @@
 		2A2EE7AB2445F99E00BE1AE7 /* CurvedShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurvedShape.swift; sourceTree = "<group>"; };
 		2A2EE7AD2445F9ED00BE1AE7 /* CurvedShapeModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurvedShapeModifier.swift; sourceTree = "<group>"; };
 		2A2EE7AF2445FB5B00BE1AE7 /* LCSearchField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LCSearchField.swift; sourceTree = "<group>"; };
+		2A623D1C255684CA00845695 /* PasswordGeneratorService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordGeneratorService.swift; sourceTree = "<group>"; };
 		2A6754282469856100B7B8BD /* PasswordGeneratorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordGeneratorView.swift; sourceTree = "<group>"; };
 		2A67542B2469862800B7B8BD /* CustomToggleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomToggleStyle.swift; sourceTree = "<group>"; };
 		2A67542E2469888000B7B8BD /* LinearGradientExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinearGradientExt.swift; sourceTree = "<group>"; };
@@ -117,6 +119,14 @@
 			path = Shapes;
 			sourceTree = "<group>";
 		};
+		2A623D1B255684B800845695 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				2A623D1C255684CA00845695 /* PasswordGeneratorService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		2A67542A2469861900B7B8BD /* Styles */ = {
 			isa = PBXGroup;
 			children = (
@@ -174,6 +184,7 @@
 		2AD3498A243CA592005FDC60 /* LastPassCloneSwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				2A623D1B255684B800845695 /* Services */,
 				2A67542A2469861900B7B8BD /* Styles */,
 				2AA1D698244F29A300AC8318 /* Utils */,
 				2A2EE7AA2445F98C00BE1AE7 /* Shapes */,
@@ -354,6 +365,7 @@
 				2A67542C2469862800B7B8BD /* CustomToggleStyle.swift in Sources */,
 				2A6754292469856100B7B8BD /* PasswordGeneratorView.swift in Sources */,
 				2A2EE7B02445FB5B00BE1AE7 /* LCSearchField.swift in Sources */,
+				2A623D1D255684CA00845695 /* PasswordGeneratorService.swift in Sources */,
 				2AE80E8E243F6075006D0233 /* LCButton.swift in Sources */,
 				2AD09430245875A700E5C18F /* SectionTitle.swift in Sources */,
 				2AD3498C243CA592005FDC60 /* AppDelegate.swift in Sources */,

@@ -10,54 +10,60 @@ import SwiftUI
 
 struct PasswordGeneratorView: View {
     
-    @State private var password = ""
     @Binding var generatedPassword: String
-    @State private var lowercase = true
-    @State private var uppercase = false
-    @State private var specialCharacters = true
-    @State private var digits = false
-    @State private var length: CGFloat = 6
+    @ObservedObject private var passwordService = PasswordGeneratorService()
     
     var body: some View {
         VStack(spacing: 30) {
             Text("Generate password").font(.title).bold()
             
             Group {
-                SharedTextfield(value: self.$password, header: "Generated Password", placeholder: "Your new password", errorMessage: "", showUnderline: false, onEditingChanged: { flag in
-                    }).padding()
-            }.background(Color.background)
-                .cornerRadius(10).neumorphic()
+                SharedTextfield(value: self.$passwordService.passowrd, header: "Generated Password", placeholder: "Your new password", errorMessage: "", showUnderline: false, onEditingChanged: { flag in
+                }).font(.system(size: 18, weight: .bold)).padding()
                 
+            }.background(Color.background)
+            .cornerRadius(10).neumorphic()
+            
             VStack(spacing: 10){
-                Toggle(isOn: $lowercase) {
+                Toggle(isOn: self.$passwordService.options.lowercase) {
                     Text("Lowercase")
                 }.toggleStyle(CustomToggleStyle())
                 
-                Toggle(isOn: $uppercase) {
+                Toggle(isOn: self.$passwordService.options.uppercase) {
                     Text("Uppercase")
                 }.toggleStyle(CustomToggleStyle())
                 
-                Toggle(isOn: $specialCharacters) {
+                Toggle(isOn: self.$passwordService.options.specialCharacters) {
                     Text("Special Characters")
                 }.toggleStyle(CustomToggleStyle())
                 
-                Toggle(isOn: $digits) {
+                Toggle(isOn: self.$passwordService.options.digits) {
                     Text("Digits")
                 }.toggleStyle(CustomToggleStyle())
                 
+                
+                HStack {
+                    Slider(value: self.$passwordService.options.length, in: 1...30, step: 1)
+                        .accentColor(Color.accent)
                     
-                Slider(value: $length, in: 1...30, step: 1)
-                    .accentColor(Color.accent)
+                    Text("\(Int(self.passwordService.options.length))")
+                        .font(.system(size: 20, weight: .bold))
+                        .foregroundColor(.gray)
+                        .frame(width: 30, height: 30)
+                    
+                }
                 
             }.padding()
-                .background(Color.background)
-                .cornerRadius(10)
-                .neumorphic()
-
+            .background(Color.background).cornerRadius(10)
+            .neumorphic()
         }.padding(.horizontal)
-            .frame(maxHeight: .infinity)
-             .background(Color.background)
-            .edgesIgnoringSafeArea(.all)
+        .frame(maxHeight: .infinity)
+        .background(Color.background)
+        .edgesIgnoringSafeArea(.all)
+        .onDisappear {
+            self.generatedPassword = self.passwordService.passowrd
+        }
+        
     }
 }
 

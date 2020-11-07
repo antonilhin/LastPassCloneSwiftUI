@@ -9,10 +9,17 @@
 import SwiftUI
 
 struct HomeView: View {
+    
+    @State var showEditFormView = false
+    
     var body: some View {
-        VStack {
-            HeaderView { filter in }
-            createList()
+        ZStack(alignment: .bottomTrailing) {
+            VStack {
+                HeaderView { filter in }
+                createList()
+            }
+            
+            createFloatingButton()
         }
     }
     
@@ -46,6 +53,30 @@ struct HomeView: View {
                 RowItems().listRowBackground(Color.background)
             }
         }
+    }
+    
+    fileprivate func createFloatingButton() -> some View {
+        Button(action: {
+            HapticFeedback.generate()
+            self.showEditFormView.toggle()
+        }) {
+            
+            Image(systemName: "plus")
+                .resizable()
+                .frame(width: 20, height: 20)
+                .foregroundColor(Color.text)
+                .padding()
+                .background(Color.background)
+                .cornerRadius(35)
+                .neumorphic()
+        }.padding(30)
+        .sheet(isPresented: self.$showEditFormView) {
+            self.createEditFormView()
+        }
+    }
+    
+    fileprivate func createEditFormView() -> some View {
+        EditFormView(showDetails: .constant(false))
     }
 }
 
