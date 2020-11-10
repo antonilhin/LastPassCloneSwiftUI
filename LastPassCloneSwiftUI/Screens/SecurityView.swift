@@ -26,7 +26,8 @@ struct SecurityView: View {
                     }.padding(.horizontal)
                     
                 }
-            }.frame(maxWidth: .infinity)
+            }
+            .frame(maxWidth: .infinity)
             .background(Color.background).cornerRadius(20)
             .padding(10)
             .padding(.vertical)

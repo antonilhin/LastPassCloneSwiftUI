@@ -9,7 +9,6 @@
 import UIKit
 
 extension NotificationCenter {
-    
     private static let keyboardWillShow = NotificationCenter.Publisher(center: .default, name: UIResponder.keyboardWillShowNotification)
     private static let keyboardWillHide = NotificationCenter.Publisher(center: .default, name: UIResponder.keyboardWillHideNotification)
     

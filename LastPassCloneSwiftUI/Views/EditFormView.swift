@@ -53,11 +53,13 @@ struct EditFormView: View {
                     HStack(spacing: 20) {
                         createSaveButton()
                         createHeartButton()
-                    }.padding(.horizontal)
+                    }
+                    .padding(.horizontal)
                     
                 }
             }
-        }.background(Color.background)
+        }
+        .background(Color.background)
         .cornerRadius(20)
         .padding().padding(.top, 40)
         .neumorphic()

@@ -60,7 +60,6 @@ struct ContentView: View {
     fileprivate func createMenuContent() -> some View {
         return MenuContent(showMenu: self.$showMenu, selectedScreen: self.$selectedScreen)
             .padding(.top, 40).padding(.bottom, 65)
-            
             .rotation3DEffect(Angle(degrees: 30 - Double(30 * dragPercent())) , axis: (x: 0, y: 1, z: 0))
             .offset(x: 100 - (100 * dragPercent()), y: 0)
             .animation(.spring(), value: showMenu)
@@ -72,21 +71,22 @@ struct ContentView: View {
     }
     
     fileprivate func dragPercent() -> CGFloat {
-             min(1,(self.offset +  self.translation) / (UIScreen.main.bounds.width / 1.5))
-        }
-           
+        min(1,(self.offset +  self.translation) / (UIScreen.main.bounds.width / 1.5))
+    }
+    
     fileprivate func handleGesture() -> _EndedGesture<GestureStateGesture<DragGesture, CGFloat>> {
-            return DragGesture().updating(self.$translation, body: { (value, state, transaction) in
-                if value.startLocation.x > self.triggerLocation {
-                    state = -value.translation.width
-                }
+        return DragGesture().updating(self.$translation, body: { (value, state, transaction) in
+            if value.startLocation.x > self.triggerLocation {
+                state = -value.translation.width
             }
-            ).onEnded({ value in
-                guard value.startLocation.x > self.triggerLocation else { return }
-                HapticFeedback.generate()
-                self.showMenu = value.translation.width < 0
-            })
         }
+        )
+        .onEnded({ value in
+            guard value.startLocation.x > self.triggerLocation else { return }
+            HapticFeedback.generate()
+            self.showMenu = value.translation.width < 0
+        })
+    }
 }
 
 struct ContentView_Previews: PreviewProvider {

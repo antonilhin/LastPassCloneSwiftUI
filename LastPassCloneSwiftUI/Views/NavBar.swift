@@ -30,15 +30,15 @@ struct NavBar: View {
                     .foregroundColor(Color.white)
                 Spacer()
                 Button(action: {
-                      self.showMenu.toggle()
-                  }) {
-
-                  Image(systemName: "line.horizontal.3")
-                      .resizable()
-                      .frame(width: 20, height: 20)
-                      .imageScale(.large)
-                      .foregroundColor(Color.white)
-                      .padding(.trailing)
+                    self.showMenu.toggle()
+                }) {
+                    
+                    Image(systemName: "line.horizontal.3")
+                        .resizable()
+                        .frame(width: 20, height: 20)
+                        .imageScale(.large)
+                        .foregroundColor(Color.white)
+                        .padding(.trailing)
                 }
             }
             .padding(.bottom, 20)

@@ -29,7 +29,8 @@ struct RowItems: View {
                     .foregroundColor(Color.gray)
                     .font(.callout)
             }
-        }.padding(.horizontal)
+        }
+        .padding(.horizontal)
         .frame(maxWidth: .infinity, minHeight: 80, alignment: .leading)
         .background(Color.background)
         .cornerRadius(20)

@@ -56,7 +56,7 @@ struct PasswordField: View {
                             .transition(.opacity)
                             .onTapGesture {
                                 self.pasteboard.string = self.value
-                        }
+                            }
                     }
                 }
             }.frame(height: 45)

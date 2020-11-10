@@ -68,7 +68,7 @@ class AuthenticationManager: ObservableObject {
                 }
                 
                 return FormValidation(success: true, message: "")
-        }.eraseToAnyPublisher()
+            }.eraseToAnyPublisher()
     }
     
     private var passwordPublisher: AnyPublisher<FormValidation, Never> {
@@ -89,7 +89,7 @@ class AuthenticationManager: ObservableObject {
                 }
                 
                 return FormValidation(success: true, message: "")
-        }.eraseToAnyPublisher()
+            }.eraseToAnyPublisher()
     }
     
     private var resetPasswordPublisher: AnyPublisher<FormValidation, Never> {
@@ -110,7 +110,7 @@ class AuthenticationManager: ObservableObject {
                 }
                 
                 return FormValidation(success: true, message: "")
-        }.eraseToAnyPublisher()
+            }.eraseToAnyPublisher()
     }
     
     private var confirmPasswordPublisher: AnyPublisher<FormValidation, Never> {
@@ -129,9 +129,9 @@ class AuthenticationManager: ObservableObject {
                 if !Config.passwordPredicate.evaluate(with: password){
                     return FormValidation(success: false, message: "The password is must contain numbers, uppercase and special characters")
                 }
-
+                
                 return FormValidation(success: true, message: "")
-        }.eraseToAnyPublisher()
+            }.eraseToAnyPublisher()
     }
     
     private var similarityPublisher: AnyPublisher<FormValidation, Never> {
@@ -147,7 +147,7 @@ class AuthenticationManager: ObservableObject {
                 }
                 
                 return FormValidation(success: true, message: "")
-        }.eraseToAnyPublisher()
+            }.eraseToAnyPublisher()
     }
     
     private lazy var biometryPublisher: Future<BiometricResult, Never> = {
@@ -193,14 +193,14 @@ class AuthenticationManager: ObservableObject {
         Publishers.CombineLatest(emailPublisher, passwordPublisher)
             .map { emailValidation, passwordValidation  in
                 emailValidation.success && passwordValidation.success
-        }.assign(to: \.canLogin, on: self)
+            }.assign(to: \.canLogin, on: self)
             .store(in: &self.cancellableSet)
         
         // Sign Up
         Publishers.CombineLatest4(emailPublisher, passwordPublisher, confirmPasswordPublisher, similarityPublisher)
             .map { emailValidation, passwordValidation, confirmedPasswordValidation, similarityValidation  in
                 emailValidation.success && passwordValidation.success && confirmedPasswordValidation.success && similarityValidation.success
-        }.assign(to: \.canSignup, on: self)
+            }.assign(to: \.canSignup, on: self)
             .store(in: &self.cancellableSet)
         
     }
@@ -256,7 +256,7 @@ class AuthenticationManager: ObservableObject {
         }
         
         if let savedEmail = keychain.get(AuthKeys.email),
-            let savedPassword = keychain.get(AuthKeys.password){
+           let savedPassword = keychain.get(AuthKeys.password){
             let hashedPassword = hashPassword(password)
             if savedEmail == email.lowercased() && hashedPassword == savedPassword{
                 login()
@@ -308,7 +308,6 @@ class AuthenticationManager: ObservableObject {
             .store(in: &self.cancellableSet)
         
     }
-    
     
     func getBiometryType() {
         var authError: NSError?

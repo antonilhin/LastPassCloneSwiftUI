@@ -9,7 +9,6 @@
 import SwiftUI
 
 struct FormModifier: ViewModifier {
-    
     func body(content: Content) -> some View {
         content.padding()
             .background(Color.background)
@@ -17,5 +16,4 @@ struct FormModifier: ViewModifier {
             .padding()
             .neumorphic()
     }
-    
 }

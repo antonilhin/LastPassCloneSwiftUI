@@ -6,8 +6,8 @@
 //  Copyright © 2020 Antonilhin. All rights reserved.
 //
 
-import SwiftUI
 import Combine
+import SwiftUI
 
 class PasswordGeneratorService: ObservableObject {
     
@@ -28,11 +28,11 @@ class PasswordGeneratorService: ObservableObject {
     @Published var options = Options()
     
     var generatePassowordPublisher: AnyPublisher<String, Never> {
-            self.$options.debounce(for: 0.3, scheduler: RunLoop.main)
-                .map {[unowned self] options in
+        self.$options.debounce(for: 0.3, scheduler: RunLoop.main)
+            .map {[unowned self] options in
                 return self.generatePassword(with: options)
             }.eraseToAnyPublisher()
-        }
+    }
     
     func generatePassword(with options: Options) -> String {
         var charOptions = ""

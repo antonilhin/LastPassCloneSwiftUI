@@ -23,13 +23,14 @@ struct LCSearchField: View {
                       onEditingChanged: self.onEditingChanged , onCommit: {
                         
                         self.onCommit()
-            }).padding(.vertical, 10)
-        }.foregroundColor(Color.gray)
-            .background(Color.background)
-            .cornerRadius(13)
-            .padding()
-            .frame(height: 45)
-            .shadow(color: Color.darkShadow, radius: 5, x: 0, y: 5)
+                      }).padding(.vertical, 10)
+        }
+        .foregroundColor(Color.gray)
+        .background(Color.background)
+        .cornerRadius(13)
+        .padding()
+        .frame(height: 45)
+        .shadow(color: Color.darkShadow, radius: 5, x: 0, y: 5)
     }
 }
 

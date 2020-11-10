@@ -13,7 +13,7 @@ import UIKit
 class CoreDataManager: ObservableObject {
     
     var context: NSManagedObjectContext
-
+    
     @Published var notePredicate = NSPredicate(value: true)
     @Published var passwordPredicate = NSPredicate(value: true)
     @Published var sortDescriptor = NSSortDescriptor(key: "createdAt", ascending: false)

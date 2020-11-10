@@ -26,7 +26,8 @@ struct SettingsView: View {
                     }.padding(.horizontal)
                     
                 }
-            }.frame(maxWidth: .infinity)
+            }
+            .frame(maxWidth: .infinity)
             .background(Color.background).cornerRadius(20)
             .padding(10)
             .modifier(NeumorphicEffect())
@@ -45,7 +46,8 @@ struct SettingsView: View {
                     }.padding(.horizontal)
                     
                 }
-            }.frame(maxWidth: .infinity)
+            }
+            .frame(maxWidth: .infinity)
             .background(Color.background).cornerRadius(20)
             .padding(10)
             .modifier(NeumorphicEffect())
@@ -56,7 +58,8 @@ struct SettingsView: View {
                     Spacer()
                     Image(systemName: "doc.on.doc.fill").foregroundColor(Color.accent)
                 }
-            }.padding(.horizontal)
+            }
+            .padding(.horizontal)
             .frame(maxWidth: .infinity)
             .background(Color.background).cornerRadius(20)
             .padding(10)
@@ -68,8 +71,8 @@ struct SettingsView: View {
                     Spacer()
                     Image(systemName: "exclamationmark.triangle.fill").foregroundColor(Color.orange)
                 }
-            }.padding(.horizontal)
-            
+            }
+            .padding(.horizontal)
             .frame(maxWidth: .infinity)
             .background(Color.background).cornerRadius(20)
             .padding(10)

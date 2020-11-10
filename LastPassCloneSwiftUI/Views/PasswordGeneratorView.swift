@@ -53,10 +53,12 @@ struct PasswordGeneratorView: View {
                     
                 }
                 
-            }.padding()
+            }
+            .padding()
             .background(Color.background).cornerRadius(10)
             .neumorphic()
-        }.padding(.horizontal)
+        }
+        .padding(.horizontal)
         .frame(maxHeight: .infinity)
         .background(Color.background)
         .edgesIgnoringSafeArea(.all)

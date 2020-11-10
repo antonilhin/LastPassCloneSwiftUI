@@ -14,8 +14,6 @@ struct MenuContent: View {
     @Binding var showMenu: Bool
     @Binding var selectedScreen: Screens
     
-    
-    
     var body: some View {
         VStack(spacing: 30) {
             Image("singlePass-dynamic").resizable().aspectRatio(contentMode: .fit) .frame(height: 30)
@@ -28,7 +26,8 @@ struct MenuContent: View {
             Spacer()
             createMenuItem(icon: "gear", screen: .Settings)
             
-        }.padding(.horizontal)
+        }
+        .padding(.horizontal)
         .padding(.leading, UIScreen.main.bounds.width  * ( 1 - 1/1.5) )
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .trailing)
         .background(Color.background)

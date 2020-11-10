@@ -26,7 +26,8 @@ struct MenuItem: View {
                 Text(screen.rawValue)
                     .frame(maxWidth: .infinity, alignment: .trailing)
                     .foregroundColor(isSelected ? .accent : .gray)
-            }.padding()
+            }
+            .padding()
             .background(Color.background)
             .cornerRadius(20).modifier(NeumorphicEffect())
         }

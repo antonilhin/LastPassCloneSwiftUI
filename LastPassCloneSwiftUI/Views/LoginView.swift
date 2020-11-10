@@ -6,8 +6,8 @@
 //  Copyright © 2020 Antonilhin. All rights reserved.
 //
 
-import SwiftUI
 import LocalAuthentication
+import SwiftUI
 
 struct LoginView: View {
     
@@ -80,9 +80,10 @@ struct LoginView: View {
                 createBiometricButton {
                     self.authManager.authenticateWithBiometric()
                 }
-            }.frame(width: 250, height: 200)
-                .background(Color.background)
-                .cornerRadius(20)
+            }
+            .frame(width: 250, height: 200)
+            .background(Color.background)
+            .cornerRadius(20)
             
             Button(action: {
                 self.showResetPasswordPopup.toggle()
@@ -106,10 +107,12 @@ struct LoginView: View {
                 
                 LCButton(text: "Save", backgroundColor: self.authManager.resetPasswordValidation.success ? Color.accent : Color.gray) {
                     self.showResetPasswordPopup = !self.authManager.saveResetPassword()
-                }.disabled(!self.authManager.resetPasswordValidation.success)
-            }.padding(.horizontal).frame(maxWidth: .infinity, maxHeight: 280)
-                .background(Color.background)
-                .cornerRadius(20)
+                }
+                .disabled(!self.authManager.resetPasswordValidation.success)
+            }
+            .padding(.horizontal).frame(maxWidth: .infinity, maxHeight: 280)
+            .background(Color.background)
+            .cornerRadius(20)
             
             Button(action: {
                 self.showResetPasswordPopup.toggle()
@@ -138,12 +141,13 @@ struct LoginView: View {
                     
                     LCButton(text: "Login", backgroundColor: self.authManager.canLogin ? Color.accent : Color.gray) {
                         self.showAlert = !self.authManager.authenticate()
-                    }.disabled(!self.authManager.canLogin)
-                        .alert(isPresented: self.$showAlert) {
-                            if self.authManager.hasAccount(){
-                                return Alert(title: Text("Error") , message: Text("Oops!The credentials you've provided are not correct, try again.") , dismissButton: Alert.Button.default(Text("Ok")) )
-                            }
-                            return Alert(title: Text("Error") , message: Text("Oops! You don't have an account yet, sign uo instead.") , dismissButton: Alert.Button.default(Text("Ok")) )
+                    }
+                    .disabled(!self.authManager.canLogin)
+                    .alert(isPresented: self.$showAlert) {
+                        if self.authManager.hasAccount(){
+                            return Alert(title: Text("Error") , message: Text("Oops!The credentials you've provided are not correct, try again.") , dismissButton: Alert.Button.default(Text("Ok")) )
+                        }
+                        return Alert(title: Text("Error") , message: Text("Oops! You don't have an account yet, sign uo instead.") , dismissButton: Alert.Button.default(Text("Ok")) )
                     }
                     
                     if self.authManager.hasAccount(){
@@ -183,10 +187,11 @@ struct LoginView: View {
                         .offset(y: self.formOffset)
                         .transition(.scale)
                 }
-            }.frame(maxWidth: .infinity, maxHeight: .infinity)
-                .background(Color.black.opacity(0.6))
-                .opacity(showResetPasswordPopup ? 1 : 0)
-                .animation(.spring())    
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(Color.black.opacity(0.6))
+            .opacity(showResetPasswordPopup ? 1 : 0)
+            .animation(.spring())
         }
     }
 }

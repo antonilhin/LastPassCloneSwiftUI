@@ -32,7 +32,8 @@ struct FormHeader: View {
                 Picker("", selection:  self.$formType) {
                     Text(FormType.Password.rawValue).tag(FormType.Password)
                     Text(FormType.Note.rawValue).tag(FormType.Note)
-                }.pickerStyle(SegmentedPickerStyle())
+                }
+                .pickerStyle(SegmentedPickerStyle())
                 .background(Color.background)
                 .padding()
                 
@@ -44,7 +45,8 @@ struct FormHeader: View {
                 
                 
                 
-            }.padding().padding(.top)
+            }
+            .padding().padding(.top)
             .frame(maxWidth: .infinity)
             .frame(height: 100)
             .background(Color.background)

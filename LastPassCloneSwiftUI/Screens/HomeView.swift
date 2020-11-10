@@ -89,7 +89,8 @@ struct HomeView: View {
                 .background(Color.background)
                 .cornerRadius(35)
                 .neumorphic()
-        }.padding(30)
+        }
+        .padding(30)
         .sheet(isPresented: self.$showEditFormView) {
             self.createEditFormView()
             

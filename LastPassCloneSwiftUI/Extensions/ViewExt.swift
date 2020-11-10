@@ -17,12 +17,12 @@ extension View {
                 .offset(x: radius, y: radius)
                 .mask(Circle().fill(LinearGradient(colors.dark, Color.clear)))
         )
-            .overlay(
-                Circle()
-                    .stroke(colors.light, lineWidth: 8)
-                    .blur(radius: radius)
-                    .offset(x: -radius, y: -radius)
-                    .mask(Circle().fill(LinearGradient(Color.clear, colors.dark)))
+        .overlay(
+            Circle()
+                .stroke(colors.light, lineWidth: 8)
+                .blur(radius: radius)
+                .offset(x: -radius, y: -radius)
+                .mask(Circle().fill(LinearGradient(Color.clear, colors.dark)))
         )
     }
 }
